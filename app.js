@@ -117,10 +117,10 @@
     rafId = requestAnimationFrame(animate);
     if (!animationReady) return;
 
-    // Smooth lerp: close gap by 18% each frame (~60fps feels fluid)
+    // Smooth lerp: 0.55 snaps quickly without feeling instant
     const diff = targetFrame - currentFrame;
     if (Math.abs(diff) > 0.1) {
-      currentFrame += diff * 0.18;
+      currentFrame += diff * 0.55;
     } else {
       currentFrame = targetFrame;
     }
@@ -157,10 +157,11 @@
       scrollInd.style.pointerEvents = scrollY < window.innerHeight ? 'auto' : 'none';
     }
 
-    // Map scroll position → target frame (RAF loop does the actual draw)
+    // Scrub all frames within the first viewport height of scroll
     if (scrollY < heroH) {
       isParallaxMode = true;
-      const progress = Math.min(scrollY / heroH, 1);
+      const scrubZone = Math.min(heroH, window.innerHeight);
+      const progress = Math.min(scrollY / scrubZone, 1);
       targetFrame = Math.min(Math.floor(progress * (FRAME_COUNT - 1)), FRAME_COUNT - 1);
     } else {
       isParallaxMode = false;
