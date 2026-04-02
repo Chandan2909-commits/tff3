@@ -113,7 +113,7 @@
   let rafId = null;
   let lastDrawnFrame = -1;
 
-  function animate() {
+  function animate(ts) {
     rafId = requestAnimationFrame(animate);
     if (!animationReady) return;
 
@@ -126,11 +126,12 @@
     }
 
     const frameIdx = Math.round(currentFrame);
-    if (frameIdx === lastDrawnFrame) return;   // skip if nothing changed
-    lastDrawnFrame = frameIdx;
+    if (frameIdx !== lastDrawnFrame) {
+      lastDrawnFrame = frameIdx;
+      drawHeroFrame(frameIdx);
+    }
 
-    drawHeroFrame(frameIdx);
-    drawDividerFrame(frameIdx);
+    runDividerAutoPlay(ts);
   }
 
   /* ---------- Parallax Frame Scrub ---------- */
@@ -328,17 +329,46 @@
   });
 
   /* ===================================================
-     7. SMOOTH PARALLAX for DIVIDER
+     7. SMOOTH PARALLAX for DIVIDER + AUTO FRAME PLAY
      =================================================== */
+  let dividerAutoPlay = false;
+  let dividerFrame = 0;
+  let lastDividerTime = 0;
+  const DIVIDER_FPS = 24;
+  const DIVIDER_FRAME_DURATION = 1000 / DIVIDER_FPS;
+
+  // IntersectionObserver — start/stop auto-play when divider enters/leaves view
+  const dividerSection = document.querySelector('.parallax-divider');
+  if (dividerSection) {
+    new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          dividerAutoPlay = true;
+          dividerFrame = 0;        // always restart from frame 0
+          lastDividerTime = 0;
+        } else {
+          dividerAutoPlay = false;
+        }
+      });
+    }, { threshold: 0.2 }).observe(dividerSection);
+  }
+
+  function runDividerAutoPlay(ts) {
+    if (!dividerAutoPlay || !animationReady) return;
+    if (ts - lastDividerTime >= DIVIDER_FRAME_DURATION) {
+      lastDividerTime = ts;
+      drawDividerFrame(dividerFrame);
+      dividerFrame = (dividerFrame + 1) % FRAME_COUNT;  // loop
+    }
+  }
+
   function handleDividerParallax() {
-    const divider = document.querySelector('.parallax-divider');
-    if (!divider || !dividerCanvas) return;
-    const rect = divider.getBoundingClientRect();
+    if (!dividerSection || !dividerCanvas) return;
+    const rect = dividerSection.getBoundingClientRect();
     const viewH = window.innerHeight;
     if (rect.top < viewH && rect.bottom > 0) {
-      // shift canvas vertically for parallax feel
       const progress = 1 - (rect.bottom / (viewH + rect.height));
-      const offset = progress * 60 - 30; // -30 to +30
+      const offset = progress * 60 - 30;
       dividerCanvas.style.transform = `translateY(${offset}px) scale(1.1)`;
     }
   }
