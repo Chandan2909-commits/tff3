@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="The Fusion Funded — Where innovation, expertise, and partnership are the cornerstones of success. Get funded and trade forex, crypto, indices with up to $200K capital." />
+  <title>The Fusion Funded | Prop Trading Firm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=3" />
+</head>
+
+<body>
+
+  <!-- ===== GLOBAL LIQUID GRADIENT BG ===== -->
+  <canvas id="liquid-bg"></canvas>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo" id="nav-logo">
+        <span class="logo-text">THE FUSION</span>
+        <span class="logo-accent">FUNDED</span>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="trading_rules.html" class="nav-link">Trading Rules</a></li>
+        <li><a href="affiliate_program.html" class="nav-link">Affiliates</a></li>
+        <li><a href="contact_us.html" class="nav-link">Contact Us</a></li>
+      </ul>
+      <a href="https://user.thefusionfunded.com/user/signup" class="nav-cta" id="nav-cta" target="_blank">Login / Sign
+        Up</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section id="hero" class="hero-section">
+    <canvas id="hero-canvas" class="hero-canvas"></canvas>
+    <div class="hero-overlay"></div>
+    <div class="grid-overlay"></div>
+    <div class="hero-content hero-split">
+      <div class="hero-left">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          MT5 Available
+        </div>
+        <h1 class="hero-title">
+          <span class="title-line">THE</span>
+          <span class="title-line gradient-text">FUSION</span>
+          <span class="title-line">FUNDED</span>
+        </h1>
+        <!-- GLASS FEATURE CARDS -->
+        <div class="hero-feature-cards">
+          <div class="hero-feat-card">
+            <div class="hero-feat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <span>Zero Reward Denials</span>
+          </div>
+          <div class="hero-feat-card">
+            <div class="hero-feat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <span>Flexible Reward Cycles</span>
+          </div>
+          <div class="hero-feat-card">
+            <div class="hero-feat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            </div>
+            <span>We Grow Together</span>
+          </div>
+          <div class="hero-feat-card">
+            <div class="hero-feat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16m-7 6h7"/></svg>
+            </div>
+            <span>Choice Is Yours</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <p class="hero-subtitle">
+          TFF is where <span class="neon-highlight">innovation</span>, <span class="neon-highlight">expertise</span>,
+          and <span class="neon-highlight">partnership</span> are the cornerstones of success.
+        </p>
+        <div class="hero-actions">
+          <a href="#plans" class="btn-primary" id="hero-cta">
+            <span>Start Challenge</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="https://t.me/thefusionfunded" class="btn-ghost" id="hero-telegram" target="_blank">
+            <span>Join Telegram</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator"><span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===== FOREX TICKER ===== -->
+  <div class="ticker-bar" id="ticker-bar">
+    <div class="ticker-track">
+      <div class="ticker-item"><span class="ticker-pair">EUR / USD</span><span class="ticker-price">1.03613</span><span
+          class="ticker-change positive">+0.03%</span></div>
+      <div class="ticker-item"><span class="ticker-pair">NZD / USD</span><span class="ticker-price">0.56258</span><span
+          class="ticker-change negative">-0.08%</span></div>
+      <div class="ticker-item"><span class="ticker-pair">USD / CHF</span><span class="ticker-price">0.89840</span><span
+          class="ticker-change negative">-0.08%</span></div>
+      <div class="ticker-item"><span class="ticker-pair">AUS / USD</span><span class="ticker-price">0.62247</span><span
+          class="ticker-change negative">-0.21%</span></div>
+      <div class="ticker-item"><span class="ticker-pair">GBP / USD</span><span class="ticker-price">1.24804</span><span
+          class="ticker-change negative">-0.16%</span></div>
+      <div class="ticker-item"><span class="ticker-pair">USD / CAD</span><span class="ticker-price">1.44268</span><span
+          class="ticker-change positive">+0.19%</span></div>
+      <!-- duplicated for seamless scroll -->
+      <div class="ticker-item"><span class="ticker-pair">EUR / USD</span><span class="ticker-price">1.03613</span><span
+          class="ticker-change positive">+0.03%</span></div>
+      <div class="ticker-item"><span class="ticker-pair">NZD / USD</span><span class="ticker-price">0.56258</span><span
+          class="ticker-change negative">-0.08%</span></div>
+      <div class="ticker-item"><span class="ticker-pair">USD / CHF</span><span class="ticker-price">0.89840</span><span
+          class="ticker-change negative">-0.08%</span></div>
+      <div class="ticker-item"><span class="ticker-pair">AUS / USD</span><span class="ticker-price">0.62247</span><span
+          class="ticker-change negative">-0.21%</span></div>
+      <div class="ticker-item"><span class="ticker-pair">GBP / USD</span><span class="ticker-price">1.24804</span><span
+          class="ticker-change negative">-0.16%</span></div>
+      <div class="ticker-item"><span class="ticker-pair">USD / CAD</span><span class="ticker-price">1.44268</span><span
+          class="ticker-change positive">+0.19%</span></div>
+    </div>
+  </div>
+
+  <!-- ===== HOW TO USE THIS SITE ===== -->
+  <section id="how-to-use" class="section how-to-use-section">
+    <div class="section-bg-glow how-to-use-glow"></div>
+    <div class="container how-to-use-container">
+      <div class="how-to-use-left">
+        <span class="section-tag">Getting Started</span>
+        <h2 class="section-title" data-reveal>How To Use <span class="gradient-text">This Site</span></h2>
+        <p class="how-to-use-desc" data-reveal>Getting started with The Fusion Funded is simple. Follow these steps to begin your funded trading journey and unlock access to up to $200K in simulated capital.</p>
+        <div class="how-to-use-steps">
+          <div class="htu-step" data-reveal-left>
+            <div>
+              <h4>Create Your Account</h4>
+              <p>Sign up on our platform in minutes. No complex paperwork — just your details and you're in.</p>
+            </div>
+          </div>
+          <div class="htu-step" data-reveal-left>
+            <div>
+              <h4>Choose a Challenge</h4>
+              <p>Pick a plan that suits your trading style — Step 1, Step 2, HFT, or HFT 2.0.</p>
+            </div>
+          </div>
+          <div class="htu-step" data-reveal-left>
+            <div>
+              <h4>Trade & Get Funded</h4>
+              <p>Hit your profit targets, pass the challenge, and receive your funded account with fast payouts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="how-to-use-right" data-reveal-right>
+        <div class="phone-mockup">
+          <div class="phone-speaker"></div>
+          <div class="phone-screen">
+            <iframe
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0"
+              title="How to use The Fusion Funded"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="phone-home-btn"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KEY HIGHLIGHTS ===== -->
+  <section id="highlights" class="section highlights-section">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-tag">Key Highlights</span>
+        <h2 class="section-title">More Than Just a <span class="gradient-text">Prop Firm</span></h2>
+        <p class="section-desc">The Fusion Funded — we are your partner in forex trading success. By providing funded
+          accounts and expert support, we help you overcome financial barriers and reach your trading potential.</p>
+      </div>
+      <div class="highlights-grid">
+        <div class="about-card" data-reveal>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg></div>
+          <h3>Safe And Secure</h3>
+          <p>Experience Ultra-Fast and Secure Trade Execution with Raw Spreads and No Commissions.</p>
+        </div>
+        <div class="about-card" data-reveal>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg></div>
+          <h3>Fast Payouts</h3>
+          <p>Payouts are given on a monthly basis and processing time is 24 hours. Making your journey smooth and
+            successful.</p>
+        </div>
+        <div class="about-card" data-reveal>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+              <line x1="4" y1="22" x2="4" y2="15" />
+            </svg></div>
+          <h3>News Trading</h3>
+          <p>Take advantage of high-impact news with The Fusion Funded, allowing you to capitalize on significant market
+            movements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY TRADE WITH US ===== -->
+  <section id="why-us" class="section why-section">
+    <div class="container why-container">
+      <div class="why-left">
+        <div class="section-header" data-reveal style="text-align: left; margin-inline: 0;">
+          <h2 class="section-title">Your Edge, <span class="gradient-text">Our Platform</span></h2>
+        </div>
+        <div class="why-grid">
+          <div class="why-card" data-reveal-left>
+            <h3>Best Trading Platforms</h3>
+            <p>Trade on MT5 Platform. The Fusion Funded traders can choose MetaTrader 5, Tradeshub, Match Trader, DXTrade, and CTrader.</p>
+          </div>
+          <div class="why-card" data-reveal-left>
+            <h3>Guaranteed Payouts</h3>
+            <p>Receive your payment within 24 hours. No reward denials — ever. Your profits, your money.</p>
+          </div>
+          <div class="why-card" data-reveal-left>
+            <h3>24/7 Support</h3>
+            <p>Enjoy professional support with an average response time of just 50 seconds. We are here round the clock.</p>
+          </div>
+        </div>
+        <div class="why-cta-row" style="text-align: left; margin-top: 30px;">
+          <a href="https://t.me/thefusionfunded" class="btn-primary" target="_blank" style="margin: 0;">
+            <span>Join Telegram Community</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="why-right" data-reveal-right>
+        <img src="3dchart.png" alt="3D Chart" class="deco-chart-side" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PLANS SECTION ===== -->
+  <section id="plans" class="section plans-section">
+    <div class="section-bg-glow plans-glow"></div>
+    <img src="bestplan_bg.png" alt="" class="deco-halo deco-halo-plans" aria-hidden="true" />
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-tag">Choose The Best Plan</span>
+        <h2 class="section-title">Select Your <span class="gradient-text">Challenge</span></h2>
+        <div class="plan-table-label">HFT 2.0</div>
+      </div>
+      <!-- HFT 2.0 Table -->
+      <div class="plan-glass-wrap" id="plan-hft2">
+        <div class="plan-glass-inner">
+          <!-- Header -->
+          <div class="pgt-row pgt-head">
+            <div class="pgt-cell pgt-label">ACCOUNT SIZE</div>
+            <div class="pgt-cell">2.5K$</div>
+            <div class="pgt-cell">5K$</div>
+            <div class="pgt-cell">10K$</div>
+            <div class="pgt-cell">25K$</div>
+            <div class="pgt-cell">50K$</div>
+            <div class="pgt-cell">100K$</div>
+          </div>
+          <!-- Rows -->
+          <div class="pgt-row">
+            <div class="pgt-cell pgt-label">CHALLENGE PHASE</div>
+            <div class="pgt-cell">$29</div>
+            <div class="pgt-cell">$49</div>
+            <div class="pgt-cell">$99</div>
+            <div class="pgt-cell">$159</div>
+            <div class="pgt-cell">$299</div>
+            <div class="pgt-cell">$559</div>
+          </div>
+          <div class="pgt-row pgt-row-alt">
+            <div class="pgt-cell pgt-label">CHALLENGE TYPE</div>
+            <div class="pgt-cell">HFT</div>
+            <div class="pgt-cell">HFT</div>
+            <div class="pgt-cell">HFT</div>
+            <div class="pgt-cell">HFT</div>
+            <div class="pgt-cell">HFT</div>
+            <div class="pgt-cell">HFT</div>
+          </div>
+          <div class="pgt-row">
+            <div class="pgt-cell pgt-label">PROFIT TARGET</div>
+            <div class="pgt-cell">10%</div>
+            <div class="pgt-cell">10%</div>
+            <div class="pgt-cell">10%</div>
+            <div class="pgt-cell">10%</div>
+            <div class="pgt-cell">10%</div>
+            <div class="pgt-cell">10%</div>
+          </div>
+          <div class="pgt-row pgt-row-alt">
+            <div class="pgt-cell pgt-label">MAX DAILY LOSS</div>
+            <div class="pgt-cell">7%</div>
+            <div class="pgt-cell">7%</div>
+            <div class="pgt-cell">7%</div>
+            <div class="pgt-cell">7%</div>
+            <div class="pgt-cell">7%</div>
+            <div class="pgt-cell">7%</div>
+          </div>
+          <div class="pgt-row">
+            <div class="pgt-cell pgt-label">MAX OVERALL LOSS</div>
+            <div class="pgt-cell">10%</div>
+            <div class="pgt-cell">10%</div>
+            <div class="pgt-cell">10%</div>
+            <div class="pgt-cell">10%</div>
+            <div class="pgt-cell">10%</div>
+            <div class="pgt-cell">10%</div>
+          </div>
+          <div class="pgt-row pgt-row-alt">
+            <div class="pgt-cell pgt-label">MIN TRADING DAYS</div>
+            <div class="pgt-cell">9 Days*</div>
+            <div class="pgt-cell">9 Days*</div>
+            <div class="pgt-cell">9 Days*</div>
+            <div class="pgt-cell">9 Days*</div>
+            <div class="pgt-cell">9 Days*</div>
+            <div class="pgt-cell">9 Days*</div>
+          </div>
+          <div class="pgt-row pgt-row-last">
+            <div class="pgt-cell pgt-label">NEWS TRADING</div>
+            <div class="pgt-cell"><span class="pgt-badge-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
+            <div class="pgt-cell"><span class="pgt-badge-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
+            <div class="pgt-cell"><span class="pgt-badge-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
+            <div class="pgt-cell"><span class="pgt-badge-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
+            <div class="pgt-cell"><span class="pgt-badge-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
+            <div class="pgt-cell"><span class="pgt-badge-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="plans-cta-row">
+        <a href="https://user.thefusionfunded.com/user/signup" class="btn-primary" target="_blank">
+          <span>Start Challenge</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== PARALLAX DIVIDER ===== -->
+  <div class="parallax-divider">
+    <canvas id="divider-canvas" class="divider-canvas"></canvas>
+    <div class="divider-overlay"></div>
+    <div class="divider-content" data-reveal-scale>
+      <h2 class="divider-headline">YOUR EDGE.<br /><span class="gradient-text">OUR CAPITAL.</span></h2>
+      <p>The most transparent prop firm in the industry.</p>
+    </div>
+  </div>
+
+  <!-- ===== COMPARISON TABLE ===== -->
+  <section id="compare" class="section compare-section">
+    <div class="section-bg-glow compare-glow"></div>
+    <div class="container">
+      <div class="section-header">
+        <h2 class="compare-headline" data-reveal>HOW DO WE COMPARE WITH<br>OTHER COMPANIES?</h2>
+      </div>
+      <div class="compare-glass-wrap">
+        <div class="compare-glass-inner">
+          <!-- Header row -->
+          <div class="cg-header-row">
+            <div class="cg-col-label"></div>
+            <div class="cg-col-tff">
+              <div class="cg-tff-badge">
+                <svg viewBox="0 0 40 40" fill="none" width="22" height="22"><path d="M20 4L8 10v10c0 7.18 5.16 13.9 12 15.93C27.84 33.9 33 27.18 33 20V10L20 4z" fill="rgba(0,100,200,0.4)" stroke="#00d4ff" stroke-width="1.5"/><path d="M14 20l4 4 8-8" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="cg-col-title">Fusion<br>Funded</span>
+            </div>
+            <div class="cg-col-others">
+              <span class="cg-col-title cg-others-title">Others</span>
+            </div>
+          </div>
+
+          <!-- Rows -->
+          <div class="cg-row">
+            <div class="cg-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M9 15l3-3 8-8-3-3-8 8-3 3 3 3z"/></svg>Scaling Rule</div>
+            <div class="cg-col-tff"><span class="cg-label cg-label-no">No</span><span class="cg-badge cg-no"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 2l10 10M12 2L2 12"/></svg></span></div>
+            <div class="cg-col-others"><span class="cg-label cg-label-yes">Yes</span><span class="cg-badge cg-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
+          </div>
+          <div class="cg-row">
+            <div class="cg-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>UPI Payouts</div>
+            <div class="cg-col-tff"><span class="cg-label cg-label-yes">Yes</span><span class="cg-badge cg-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
+            <div class="cg-col-others"><span class="cg-label cg-label-no">No</span><span class="cg-badge cg-no"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 2l10 10M12 2L2 12"/></svg></span></div>
+          </div>
+          <div class="cg-row">
+            <div class="cg-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>IP Rule</div>
+            <div class="cg-col-tff"><span class="cg-label cg-label-no">No</span><span class="cg-badge cg-no"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 2l10 10M12 2L2 12"/></svg></span></div>
+            <div class="cg-col-others"><span class="cg-label cg-label-yes">Yes</span><span class="cg-badge cg-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
+          </div>
+          <div class="cg-row">
+            <div class="cg-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Ultrafast Support</div>
+            <div class="cg-col-tff"><span class="cg-label cg-label-yes">Yes</span><span class="cg-badge cg-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
+            <div class="cg-col-others"><span class="cg-label cg-label-no">No</span><span class="cg-badge cg-no"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 2l10 10M12 2L2 12"/></svg></span></div>
+          </div>
+          <div class="cg-row">
+            <div class="cg-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>News Trading</div>
+            <div class="cg-col-tff"><span class="cg-label cg-label-yes">Yes</span><span class="cg-badge cg-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
+            <div class="cg-col-others"><span class="cg-label cg-label-no">No</span><span class="cg-badge cg-no"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 2l10 10M12 2L2 12"/></svg></span></div>
+          </div>
+          <div class="cg-row cg-row-last">
+            <div class="cg-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>MT5 Platform</div>
+            <div class="cg-col-tff"><span class="cg-label cg-label-yes">Yes</span><span class="cg-badge cg-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
+            <div class="cg-col-others"><span class="cg-label cg-label-no">No</span><span class="cg-badge cg-no"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 2l10 10M12 2L2 12"/></svg></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section id="about" class="section about-section">
+    <div class="section-bg-glow about-glow"></div>
+    <img src="bestplan_bg.png" alt="" class="deco-halo deco-halo-about" aria-hidden="true" />
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-tag">About Our Company</span>
+        <h2 class="section-title">The Fusion <span class="gradient-text">Funded</span></h2>
+      </div>
+      <div class="about-content" data-reveal>
+        <p>At The Fusion Funded, we empower traders to unlock their full potential in the financial markets. As a
+          premier proprietary trading firm, we provide skilled traders with the capital they need to excel. Our mission
+          is to create a dynamic trading environment where talent meets opportunity.</p>
+        <p>Founded by a team of seasoned traders and financial experts, The Fusion Funded stands at the intersection of
+          innovation and tradition. We offer a unique funding model that prioritizes performance and risk management,
+          ensuring our traders have the resources and support necessary to thrive.</p>
+        <div class="about-stats-row">
+          <div class="about-stat"><span class="about-stat-val">$200K</span><span class="about-stat-lbl">Max
+              Capital</span></div>
+          <div class="about-stat"><span class="about-stat-val">24h</span><span class="about-stat-lbl">Payout Time</span>
+          </div>
+          <div class="about-stat"><span class="about-stat-val">50s</span><span class="about-stat-lbl">Avg Support
+              Response</span></div>
+          <div class="about-stat"><span class="about-stat-val">MT5</span><span class="about-stat-lbl">Trading
+              Platform</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===== FLOATING GRADIENT ORBS ===== -->
+  <div class="gradient-orb orb-1"></div>
+  <div class="gradient-orb orb-2"></div>
+  <div class="gradient-orb orb-3"></div>
+  <div class="gradient-orb orb-4"></div>
+  <div class="gradient-orb orb-5"></div>
+
+  <!-- ===== GET STARTED CTA ===== -->
+  <section class="section cta-section" id="cta-section">
+    <canvas id="cta-circuit" class="section-circuit"></canvas>
+    <div class="cta-gradient-bg"></div>
+    <img src="3dchart.png" alt="" class="deco-chart deco-chart-cta" aria-hidden="true" />
+    <div class="container cta-container">
+      <h2 class="cta-headline" data-reveal>Get Started <span class="gradient-text">Today</span></h2>
+      <p class="cta-desc" data-reveal>Ready to take your trading to the next level? Join The Fusion Funded and unlock the potential
+        of professional trading with the best tools, fast payouts, and expert support from a trusted prop firm.</p>
+      <div class="cta-actions">
+        <a href="https://user.thefusionfunded.com/user/signup" class="btn-primary btn-large" target="_blank">
+          <span>Start Your Challenge</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      <div class="cta-community">
+        <span class="cta-community-label">Join Our Community</span>
+        <div class="cta-community-links">
+          <a href="https://t.me/thefusionfunded" class="community-link" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+              <path
+                d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+            </svg>
+            <span>Telegram</span>
+          </a>
+          <a href="https://www.instagram.com/thefusionfunded/" class="community-link" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+            <span>Instagram</span>
+          </a>
+          <a href="https://wa.me/message/M3FHBYUPELBIJ1" class="community-link" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LONG FOOTER ===== -->
+  <footer class="footer long-footer">
+    <div class="footer-glow"></div>
+    <div class="footer-gradient-shape"></div>
+    <div class="container">
+      <!-- Main Footer Grid -->
+      <div class="footer-grid footer-grid-3">
+        <div class="footer-brand">
+          <div class="footer-logo">THE FUSION <span class="gradient-text">FUNDED</span></div>
+          <p>At The Fusion Funded, we empower traders to unlock their full potential in the financial markets. We
+            provide funded accounts and expert support to help you overcome financial barriers.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/thefusionfunded/" class="social-link" aria-label="Instagram"
+              target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+            </a>
+            <a href="https://t.me/thefusionfunded" class="social-link" aria-label="Telegram" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+              </svg>
+            </a>
+            <a href="https://wa.me/message/M3FHBYUPELBIJ1" class="social-link" aria-label="WhatsApp" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Official</h4>
+          <ul>
+            <li><a href="trading_rules.html">Trading Rules</a></li>
+            <li><a href="affiliate_program.html">Affiliate Program</a></li>
+
+            <li><a href="contact_us.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:info@thefusionfunded.com">info@thefusionfunded.com</a></li>
+            <li><a href="tel:+447861395161">+44 7861 395161</a></li>
+            <li>Grigori Afxentiou, Ayia Napa, Cyprus</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Risk Disclaimer -->
+      <div class="footer-disclaimer">
+        <h5>Risk Disclosure</h5>
+        <p>Trading in financial instruments carries a high level of risk to your capital, with the possibility of losing
+          more than your initial investment. Trading in financial instruments may not be suitable for all investors and
+          is only intended for people over 18. Please ensure that you are fully aware of the risks involved and, if
+          necessary, seek independent financial advice. The educational content on The Fusion Funded does not constitute
+          investment advice.</p>
+        <p>The Fusion Funded does not provide financial services. The Fusion Funded is a simulated trading platform
+          where users can experience realistic trading conditions without risking actual capital. All trading activities
+          on this platform use virtual funds and do not constitute real financial transactions. Past simulated
+          performance is not indicative of future real-world results.</p>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <p>&copy; 2024 The Fusion Funded. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Risk Disclosure</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/message/M3FHBYUPELBIJ1" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp"
+    id="whatsapp-float">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+    <span>Need Help?</span>
+  </a>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

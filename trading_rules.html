@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="The Fusion Funded — Trading Rules and Guidelines." />
+  <title>The Fusion Funded | Trading Rules</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=3" />
+  <style>
+    .rules-hero { padding-top: 150px; padding-bottom: 80px; position: relative; z-index: 2; }
+    .rules-hero-container { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+    .rules-hero-content { flex: 1; }
+    .rules-hero-title { font-family: 'Orbitron', sans-serif; font-size: 3rem; margin-bottom: 20px; color: #fff; }
+    .rules-hero-desc { font-size: 1rem; line-height: 1.6; color: #8bb8cc; margin-bottom: 30px; }
+    .rules-hero-img-wrapper { flex: 1; display: flex; justify-content: center; position: relative; }
+    .rules-hero-img { max-width: 100%; height: auto; border-radius: 20px; animation: float 6s ease-in-out infinite; }
+
+    .help-section { text-align: center; padding: 60px 0; background: transparent; border: none; margin-bottom: 80px; position: relative; z-index: 2; }
+    .help-title { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; margin-bottom: 40px; color: #fff; }
+    .rules-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: left; padding: 0 40px; }
+
+    .rule-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(0,212,255,0.12);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      display: flex; flex-direction: column; gap: 12px; cursor: pointer;
+    }
+    .rule-card:hover { transform: translateY(-5px); border-color: rgba(0,212,255,0.3); box-shadow: 0 0 24px rgba(0,212,255,0.1), 0 12px 32px rgba(0,0,0,0.4); }
+
+    .rule-icon {
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(0,212,255,0.2);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: #00d4ff; margin-bottom: 8px;
+      backdrop-filter: blur(8px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .rule-icon svg { width: 24px; height: 24px; }
+    .rule-card h3 { font-family: 'Rajdhani', sans-serif; font-size: 1.3rem; font-weight: 600; color: #fff; margin: 0; }
+    .rule-card p { font-size: 0.9rem; color: #8bb8cc; margin: 0; flex-grow: 1; }
+    .rule-footer { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 0.85rem; color: #8bb8cc; }
+    .rule-footer-icon { width: 20px; height: 20px; background: #00d4ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; }
+    .rule-footer-icon svg { width: 12px; height: 12px; }
+
+    @media (max-width: 992px) { .rules-grid { grid-template-columns: repeat(2, 1fr); } .rules-hero-container { flex-direction: column; } }
+    @media (max-width: 768px) { .rules-grid { grid-template-columns: 1fr; padding: 0 20px; } }
+
+    .search-wrapper { position: relative; margin: 0 auto 40px; width: 100%; max-width: 250px; height: 56px; background: #000; border-radius: 28px; transition: max-width 0.5s cubic-bezier(0.175,0.885,0.32,1.275), box-shadow 0.4s ease, background-color 0.4s ease; z-index: 100; box-shadow: 0 10px 30px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.1); }
+    .search-wrapper:focus-within, .search-wrapper.has-value { max-width: 600px; background: rgba(14,18,30,0.95); box-shadow: 0 10px 40px rgba(0,212,255,0.2), inset 0 0 0 1px #00d4ff; }
+    .search-input { width: 100%; height: 100%; padding: 0 20px 0 54px; background: transparent; border: none; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; color: #fff; outline: none; border-radius: 28px; }
+    .search-input::placeholder { color: rgba(255,255,255,0.5); transition: opacity 0.3s ease; }
+    .search-icon { position: absolute; top: 50%; left: 18px; transform: translateY(-50%); color: #8bb8cc; pointer-events: none; transition: color 0.3s ease; }
+    .search-wrapper:focus-within .search-icon, .search-wrapper.has-value .search-icon { color: #00d4ff; }
+    .search-dropdown { position: absolute; top: calc(100% + 15px); left: 0; width: 100%; background: rgba(10,14,23,0.95); border: 1px solid rgba(0,212,255,0.2); border-radius: 24px; backdrop-filter: blur(15px); max-height: 300px; overflow-y: auto; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.6); padding: 10px 0; }
+    .search-dropdown.active { display: flex; }
+    .search-result-item { padding: 15px 20px; color: #8bb8cc; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); transition: all 0.2s ease; text-decoration: none; display: block; }
+    .search-result-item:last-child { border-bottom: none; }
+    .search-result-item:hover { background: rgba(0,212,255,0.1); color: #fff; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== GLOBAL LIQUID GRADIENT BG ===== -->
+  <canvas id="liquid-bg"></canvas>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo" id="nav-logo">
+        <a href="index.html" style="text-decoration: none; color: inherit; display: flex;">
+          <span class="logo-text">THE FUSION</span>
+          <span class="logo-accent">FUNDED</span>
+        </a>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="trading_rules.html" class="nav-link">Trading Rules</a></li>
+        <li><a href="affiliate_program.html" class="nav-link">Affiliates</a></li>
+        <li><a href="contact_us.html" class="nav-link">Contact Us</a></li>
+      </ul>
+      <a href="https://user.thefusionfunded.com/user/signup" class="nav-cta" id="nav-cta" target="_blank">Login / Sign
+        Up</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== FLOATING GRADIENT ORBS ===== -->
+  <div class="gradient-orb orb-1"></div>
+  <div class="gradient-orb orb-2"></div>
+  <div class="gradient-orb orb-3"></div>
+
+  <!-- ===== TRADING RULES HERO ===== -->
+  <section class="rules-hero container">
+    <div class="rules-hero-container">
+      <div class="rules-hero-content" data-reveal-left>
+        <h1 class="rules-hero-title">Trade without <span class="gradient-text">any boundaries</span></h1>
+        <p class="rules-hero-desc">
+          At The only prop, trading guidelines are intended to encourage an organized and profitable trading atmosphere. Our guidelines are designed to promote sensible trading practices, such as risk administration and compliance to corporate goals. By matching our regulations with best practices in the marketplace. Top guarantees that traders function in an environment that encourages stability and development.
+        </p>
+        <a href="contact_us.html"  class="btn-ghost" >
+          <span>CONTACT US</span>
+        </a>
+      </div>
+      <div class="rules-hero-img-wrapper" data-reveal-right>
+        <img src="trading_robot.png" alt="Trading Robot Market Mascot" class="rules-hero-img" style="filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.4)); transform: scale(1.05);" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HELP SECTION (GRID) ===== -->
+  <section class="container">
+    <div class="help-section" data-reveal>
+      <h2 class="help-title">Hi there, what do you need help with today?</h2>
+      
+      <div class="search-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" class="search-input" id="rules-search" placeholder="Search trading rules, kyc, withdrawals..." autocomplete="off">
+        <div class="search-dropdown" id="search-dropdown"></div>
+      </div>
+      
+      <div class="rules-grid">
+        <!-- Card 1 -->
+        <a href="trading_rules_detail.html?category=about" style="text-decoration: none; color: inherit; display: block;">
+          <div class="rule-card">
+            <div class="rule-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            </div>
+            <h3>About The Fusion Funded</h3>
+            <p>The Fusion Funded</p>
+            <div class="rule-footer">
+              <div class="rule-footer-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+              </div>
+              <span>By The Fusion Funded &middot; 4 Articles</span>
+            </div>
+          </div>
+        </a>
+        
+        <!-- Card 2 -->
+        <a href="trading_rules_detail.html?category=rules" style="text-decoration: none; color: inherit; display: block;">
+          <div class="rule-card">
+            <div class="rule-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 3v5h5M16 13H8M16 17H8M10 9H8"/></svg>
+            </div>
+            <h3>Trading Rules and Guidelines</h3>
+            <p>Rules</p>
+            <div class="rule-footer">
+              <div class="rule-footer-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+              </div>
+              <span>By The Fusion Funded &middot; 2 Articles</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="trading_rules_detail.html?category=kyc" style="text-decoration: none; color: inherit; display: block;">
+          <div class="rule-card">
+            <div class="rule-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            </div>
+            <h3>KYC (Know Your Customer)</h3>
+            <p>KYC</p>
+            <div class="rule-footer">
+              <div class="rule-footer-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+              </div>
+              <span>By The Fusion Funded &middot; 4 Articles</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 4 -->
+        <a href="trading_rules_detail.html?category=withdrawals" style="text-decoration: none; color: inherit; display: block;">
+          <div class="rule-card">
+            <div class="rule-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2" ry="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            </div>
+            <h3>Withdrawals</h3>
+            <p>Withdrawals</p>
+            <div class="rule-footer">
+              <div class="rule-footer-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+              </div>
+              <span>By The Fusion Funded &middot; 4 Articles</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 5 -->
+        <a href="trading_rules_detail.html?category=weekend" style="text-decoration: none; color: inherit; display: block;">
+          <div class="rule-card">
+            <div class="rule-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3>Weekend Trading</h3>
+            <p>Weekend</p>
+            <div class="rule-footer">
+              <div class="rule-footer-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+              </div>
+              <span>By The Fusion Funded &middot; 1 Articles</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 6 -->
+        <a href="trading_rules_detail.html?category=security" style="text-decoration: none; color: inherit; display: block;">
+          <div class="rule-card">
+            <div class="rule-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h3>Account Security &amp; Access Rules</h3>
+            <p>Some important Rules</p>
+            <div class="rule-footer">
+              <div class="rule-footer-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+              </div>
+              <span>By The Fusion Funded &middot; 2 Articles</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 7 -->
+        <a href="trading_rules_detail.html?category=refund" style="text-decoration: none; color: inherit; display: block;">
+          <div class="rule-card">
+            <div class="rule-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Refund Policies</h3>
+            <p>Refund</p>
+            <div class="rule-footer">
+              <div class="rule-footer-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+              </div>
+              <span>By The Fusion Funded &middot; 1 Articles</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LONG FOOTER ===== -->
+  <footer class="footer long-footer">
+    <div class="footer-glow"></div>
+    <div class="footer-gradient-shape"></div>
+    <div class="container">
+      <div class="footer-grid footer-grid-3">
+        <div class="footer-brand">
+          <div class="footer-logo">THE FUSION <span class="gradient-text">FUNDED</span></div>
+          <p>At The Fusion Funded, we empower traders to unlock their full potential in the financial markets. We
+            provide funded accounts and expert support to help you overcome financial barriers.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/thefusionfunded/" class="social-link" aria-label="Instagram"
+              target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://t.me/thefusionfunded" class="social-link" aria-label="Telegram" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </a>
+            <a href="https://wa.me/message/M3FHBYUPELBIJ1" class="social-link" aria-label="WhatsApp" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Official</h4>
+          <ul>
+            <li><a href="trading_rules.html">Trading Rules</a></li>
+            <li><a href="affiliate_program.html">Affiliate Program</a></li>
+
+            <li><a href="contact_us.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:info@thefusionfunded.com">info@thefusionfunded.com</a></li>
+            <li><a href="tel:+447861395161">+44 7861 395161</a></li>
+            <li>Grigori Afxentiou, Ayia Napa, Cyprus</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Risk Disclaimer -->
+      <div class="footer-disclaimer">
+        <h5>Risk Disclosure</h5>
+        <p>Trading in financial instruments carries a high level of risk to your capital, with the possibility of losing
+          more than your initial investment. Trading in financial instruments may not be suitable for all investors and
+          is only intended for people over 18. Please ensure that you are fully aware of the risks involved and, if
+          necessary, seek independent financial advice. The educational content on The Fusion Funded does not constitute
+          investment advice.</p>
+        <p>The Fusion Funded does not provide financial services. The Fusion Funded is a simulated trading platform
+          where users can experience realistic trading conditions without risking actual capital. All trading activities
+          on this platform use virtual funds and do not constitute real financial transactions. Past simulated
+          performance is not indicative of future real-world results.</p>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <p>&copy; 2024 The Fusion Funded. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Risk Disclosure</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    const searchData = [
+      { question: "What is The Fusion Funded?", category: "about", content: "The Fusion Funded is a proprietary trading firm that provides traders with access to funded capital through a structured evaluation process. Our model is specifically designed for traders who use high-frequency trading systems (HFT), automation, and advanced execution strategies to achieve performance efficiently Unlike traditional prop firms, The Fusion Funded allows traders to use HFT-based strategies during the challenge phase , enabling faster completion of evaluation objectives. We operate on a single evaluation model: &bull; HFT 2.0 Challenge This challenge is designed to assess a trader's ability to generate profits while maintaining strict risk management. Traders may also choose to work with our trusted partners , who specialize in high-frequency trading systems and can assist in completing the challenge using advanced trading solutions. All accounts that successfully meet the evaluation criteria are reviewed and transitioned into a funded trading environment where structured risk rules are applied." },
+      { question: "What makes The Fusion Funded different?", category: "about", content: "The Fusion Funded operates on a performance-driven and execution-flexible model , built specifically for modern traders. Key differences include: HFT-enabled challenge phase Traders can use high-frequency trading systems, automation, and fast execution strategies to complete the challenge. Single streamlined evaluation (HFT 2.0) No complex multi-phase challenges — one clear path to funding. Improved risk structure 10% maximum drawdown 7% daily drawdown Flexible payout structure Traders can earn up to: 60% &rarr; 70% &rarr; 80% &rarr; 90% profit split Faster progression system Designed to allow traders to complete evaluations efficiently using their preferred strategies. Once funded, traders operate under a structured and controlled trading environment to ensure long-term sustainability and capital protection." },
+      { question: "How do I get started with The Fusion Funded?", category: "about", content: "Getting started with The Fusion Funded is simple: Step 1 — Choose Your Account Select your preferred account size and purchase the HFT 2.0 Challenge. Step 2 — Start Trading Begin trading on your challenge account. You may trade manually or use HFT systems and automated strategies to achieve the profit target. Traders may also choose to work with our trusted partners , who can assist in completing the challenge using high-frequency trading systems. Trade By The Fusion Funded Rules Trade the evaluation account while respecting the challenge objectives and the 10% static drawdown rule (no daily drawdown limit) . Step 3 — Achieve the Profit Target Reach the required profit target while following all trading rules. Step 4 — Account Review Once the target is achieved, your account is reviewed to ensure compliance with all rules. Step 5 — Get Funded After successful review, you will receive your funded account and can begin trading under the funded model." },
+      { question: "Who can join The Fusion Funded?", category: "about", content: "The Fusion Funded is open to traders worldwide who want to demonstrate their trading skills and access funded capital Eligibility requirements: Must be at least 18 years old Must have a valid trading strategy Must follow all trading rules and risk guidelines Both beginner and experienced traders are welcome. The Fusion Funded is designed for traders who: Use manual or automated strategies Want to leverage HFT systems during evaluation Aim to trade funded capital with structured risk To comply with international regulations, services may not be available in restricted jurisdictions or to individuals listed under global sanctions or financial compliance restrictions. Restricted Jurisdictions & Compliance To comply with international regulations, The Fusion Funded does not provide services to individuals who are located in or are residents of the following countries or regions: Democratic People's Republic of Korea (North Korea) Iran South Sudan Sudan Yemen Additionally, we do not provide services to individuals or entities listed on international sanctions lists or global anti-terrorism compliance lists. Additional Restrictions The Fusion Funded does not offer services to: Individuals listed on international sanctions lists Persons with criminal histories involving financial crimes or terrorism Individuals previously banned due to contract violations or policy breaches" },
+      { question: "The Fusion Funded — HFT 2.0 Challenge Model", category: "rules", content: "The Fusion Funded operates on a single evaluation system known as the HFT 2.0 Challenge. This model is designed for traders who want to use high-frequency trading systems (HFT), automation, and advanced execution strategies to complete their evaluation efficiently During the challenge phase HFT strategies are allowed Tick scalping is allowed Arbitrage and latency-based strategies are allowed Traders may also choose to work with our trusted partners, who specialize in high-frequency trading systems and can assist in completing the challenge efficiently Once funded, all accounts operate under a structured and rule-based environment, where specific trading restrictions apply Challenge Objectives To successfully complete the HFT 2.0 Challenge, traders must: Achieve the required profit target Follow all trading rules Maintain proper risk management All accounts are reviewed after completion of the challenge. Evaluation Process Once the profit target is achieved, the account is placed under review Trading behavior and rule compliance are verified Upon approval, the trader is moved to the funded stage Profit Target The profit target for the HFT 2.0 Challenge is 10% of the initial account size Example: For a $100,000 account: Profit Target = $10,000 This target can be achieved using manual trading or HFT strategies during the challenge phase. Drawdown Rules Maximum Overall Drawdown Maximum loss allowed: 10% of initial account size Daily Drawdown Daily loss limit: 7% Example: Account Size: $100,000 Maximum Drawdown: $10,000 Daily Drawdown: $7,000 The account balance or equity must never fall below the defined limits. 20% Risk Per Trade Rule A trader can risk a maximum of 20% of the total drawdown allowance in a single trade, and to follow this rule, a mandatory SL on positions is required in order to track and keep the maximum allowed risk under 20%. Example: Account Size: $100,000 Total Drawdown Allowed: $10,000 Maximum Risk Per Trade: $2,000 Exceeding this limit at any point during trade execution or exposure calculation will be treated as a violation, regardless of trade outcome. Consistency Rule A trader’s single trading day or trade must not exceed 30% of total profits. Example: Total Profit: $10,000 Maximum allowed from a single day/trade: $3,000 Exceeding this limit will result in a violation. Minimum Trading Days Minimum required trading days: 14 days Optional add-on reduces this to 9 trading days Minimum Trading Day Rule (Lot-Based) A trading day will only be counted if the trader places a trade with at least: 0.1x (1/10th) of the largest lot size used during the payout cycle Example: If the largest lot used = 1.0 lot Minimum lot required to count a day = 0.1 lot Trades below this threshold will not be counted as valid trading days Layering Rule Opening more than 3 positions in the same direction on the same instrument simultaneously is not allowed. Adding positions to trades that are already in drawdown, grid trading, or recovery-based entries may be considered a violation. Challenge Phase: May be treated as a soft breach Funded Stage: May be treated as a hard breach Martingale Rule Martingale trading is strictly prohibited Martingale includes increasing position size after a loss in an attempt to recover previous losses. Important: The sum of all open positions will be treated as a single combined position. If a trader increases total exposure after a losing trade, it will be considered a martingale strategy. Examples: Increasing lot size after a loss Re-entering trades with higher risk to recover drawdown Adding positions that increase total exposure after a loss Challenge Phase: May be treated as a soft breach Funded Stage: May be treated as a hard breach Minimum Trade Holding Time (Live Accounts Only) On funded accounts: Each trade must be held for a minimum of 2 minutes Up to 3–4 trades per payout cycle may be ignored. If this limit is exceeded: It will be treated as a soft breach The payout will be rejected The account will be reset to the initial balance Trading Behavior Rules The following behaviors are considered violations: Toxic Trading Behavior Ignoring risk management Reckless or undisciplined trading Trading without a clear strategy Overtrading Excessive number of trades in a short time Continuous entries without proper setup Gambling Behavior Random entries without analysis Revenge trading Emotion-driven execution Repeated violations may result in restrictions or account termination. Tick Scalping Tick scalping refers to extremely fast trades capturing very small price movements. Example: Opening and closing trades within very short durations repeatedly During the challenge phase, tick scalping is allowed. On funded accounts Tick scalping is restricted Excessive use may be treated as a violation Arbitrage Trading (Restricted) Arbitrage trading refers to exploiting price differences rather than trading market direction. Example: Opening offsetting positions across correlated instruments to neutralize exposure During the challenge phase, arbitrage strategies are allowed. On funded accounts Arbitrage trading is restricted Such activity may be treated as a violation Hedging Improper hedging practices are not allowed. Example: Opening opposite trades on the same instrument Locking positions to remove exposure Such behavior may be flagged and treated as a violation Reverse Trading Reverse trading includes: Intentionally placing losing trades Offsetting positions across accounts Manipulating exposure to bypass rules Trades placed to neutralize exposure within short time intervals may be flagged. One-Sided Bias Trading Repeated trading in only one direction without logical justification may trigger a review. This behavior may indicate poor risk management or strategy imbalance. News Trading News trading is fully allowed. Traders may open, close, and manage positions during: High-impact news releases Economic announcements Volatile market conditions Traders are responsible for managing risk during periods of high volatility. All standard risk rules still apply. Weekend Holding (Rule Reference) Weekend holding is allowed with prior approval. Refer to the Weekend Trading section for full details. Excessive Risk-Taking / Over-Leveraging The use of disproportionately large position sizes or repeated maximum exposure trades that can significantly impact the account balance may be considered excessive risk-taking. Examples: Repeated use of maximum lot size Taking trades that can damage the account rapidly Over-reliance on leverage Such behavior may result in restrictions or account termination. Breach System Soft Breach Payout is rejected Account is reset to initial balance Account remains active in the same phase Hard Breach Account is permanently terminated" },
+      { question: "Why is KYC required for my account?", category: "kyc", content: "Completing the Know Your Customer (KYC) process is mandatory to maintain a secure and compliant trading environment at The Fusion Funded. Why KYC is required: 1. Legal & Regulatory Compliance KYC helps prevent: Fraud laundering Identity misuse Financial crime It ensures all accounts belong to real and verified individuals. 2. Account Security & Protection KYC links your trading account to verified identity details, helping prevent: Unauthorized access Identity theft Account misuse 3. Fair Trading Environment KYC ensures: One individual does not operate multiple accounts Duplicate or fraudulent accounts are prevented All traders are evaluated fairly 4. Payout Eligibility KYC verification must be completed before any payout request. Without KYC approval: Withdrawals cannot be processed Account features may remain restricted" },
+      { question: "What documents are required for KYC verification?", category: "kyc", content: "To complete KYC verification, traders must submit valid documents confirming identity. Personal Identification (Required) Submit one valid government-issued photo ID: Passport (preferred) Driver's License National ID Card Requirements: Document must be valid and not expired All details must be clear and readable Name must match the account details exactly" },
+      { question: "How long does KYC verification take?", category: "kyc", content: "KYC verification is usually completed quickly, depending on document quality. Typical Timeframes: Instant Approval (in some cases) Standard Processing: 1-2 business days Delays may occur if: Documents are unclear or incomplete Information does not match account details Additional verification is required How you will be notified: Email confirmation Account status update" },
+      { question: "What happens if my KYC is rejected?", category: "kyc", content: "If your KYC is rejected, it can usually be resolved by correcting the submitted information. Common reasons for rejection: Blurry or cropped documents Expired documents Mismatched account details Incomplete submission What happens next: You will receive a rejection email with the reason You can resubmit corrected documents Re-verification time: Typically completed within 1-2 business days Important: If required documents are not provided: Account access may remain restricted Payouts cannot be processed" },
+      { question: "What is the minimum amount required for a withdrawal?", category: "withdrawals", content: "To ensure efficient processing, The Fusion Funded applies a minimum withdrawal requirement. Minimum Withdrawal: 1% of the initial account size Withdrawal requests below this amount cannot be processed." },
+      { question: "What are the Withdrawal Methods?", category: "withdrawals", content: "Available payout methods may include: Cryptocurrency (USDT and other supported crypto assets) UPI transfers Bank transfers E-wallet payments (where available) Payment options may vary depending on location and availability." },
+      { question: "What are the requirements before withdrawing?", category: "withdrawals", content: "Before submitting a withdrawal request, the following conditions must be met: Minimum profit of 1% of account size is achieved Minimum trading days requirement is completed (14 days or 9 days with add-on) KYC verification is completed and approved All trading rules are followed No active violations are present Account is in profit and above initial balance Important Rule: Once a withdrawal request is submitted: No further trading activity is allowed Placing trades after requesting a payout may result in a violation and will be treated as a violation and may lead to account termination." },
+      { question: "Payout Cycle and Profit Split", category: "withdrawals", content: "The Fusion Funded operates on a structured payout system. Payout Cycle: Payout cycle: 18 days Traders become eligible to request payouts after completing the payout cycle and meeting all requirements. Profit Split Structure: Traders can earn: 60% &rarr; 70% &rarr; 80% &rarr; 90% profit split The Fusion Funded is among the few firms offering 60% profit split from the first payout, with scaling opportunities for higher payouts." },
+      { question: "How long does it take to receive a withdrawal?", category: "withdrawals", content: "Once a withdrawal request is submitted: The request is reviewed and processed after eligibility conditions are met Approval is subject to compliance and risk checks After approval: Funds are processed and delivered as soon as possible, depending on the selected payout method Processing times may vary based on: Payment method Network conditions Banking or provider timelines Important Notes: Delays may occur due to weekends, holidays, or additional verification checks The Fusion Funded ensures all payouts are processed securely and efficiently" },
+      { question: "Is Weekend Holding Allowed?", category: "weekend", content: "Yes — Weekend Holding is allowed with prior approval Traders are permitted to hold positions over the weekend on both challenge and funded accounts, provided approval is obtained before the market closes on Friday. How to request approval: Traders must inform support before the Friday market close The request should clearly mention that positions will be held over the weekend Failure to notify support before market close may result in a violation. Important Notes: Markets may open with price gaps after the weekend Increased volatility and slippage may occur at market open All standard risk rules, including drawdown limits, still apply Traders are responsible for managing risk while holding positions over the weekend." },
+      { question: "What is the IP Address Policy?", category: "security", content: "There are no strict IP location restrictions for traders. Traders may access their accounts from different locations, devices, or networks without violating any rules. Account Access & Security While location flexibility is allowed, the following are strictly prohibited: Account sharing Unauthorized third-party access Selling or transferring account access Use of compromised or stolen identities If suspicious activity is detected, The Fusion Funded may request additional verification to protect the account. Important Notes: Traders can travel and trade freely Logging in from multiple locations is allowed Use of different devices is allowed Standard security monitoring still applies" },
+      { question: "What is the Inactivity Policy?", category: "security", content: "To ensure active participation, The Fusion Funded enforces an inactivity rule across all accounts. Inactivity Rule: If a trading account remains inactive for 14 consecutive days , it will be considered a violation and may result in account termination. What counts as inactivity: No trades placed No trading activity Account remains idle How to avoid inactivity: Place at least one trade within every 14-day period Maintain regular account activity Failure to meet this requirement may result in account termination." },
+      { question: "What is the Refund Policy?", category: "refund", content: "Evaluation fees are not refunded immediately after purchase. However, The Fusion Funded offers a performance-based refund system for eligible traders. Refund Eligibility The challenge fee can be refunded once the trader: Successfully reaches the funded stage Completes four successful payouts Maintains compliance with all trading rules Keeps the account in good standing Add-On Requirement Refund eligibility is only available for traders who have selected the refund add-on at the time of purchase . If the add-on is not selected: The evaluation fee will remain non-refundable When is the refund issued? The refund is processed along with the fourth payout from the funded account. When refunds are NOT applicable: Refunds will not be issued in the following cases: Failed challenges Rule violations Account termination Inactivity breaches Payment disputes or chargebacks Trading losses Why evaluation fees exist: Evaluation fees cover: Platform access Infrastructure and technology Risk management systems Operational costs These costs are incurred once the account is activated. Agreement to refund policy By purchasing any evaluation program, you acknowledge that: Refunds are performance-based Refund eligibility depends on completing payout milestones All trading rules must be followed >" }
+    ];
+
+    const searchDropdown = document.getElementById('search-dropdown');
+    const searchInput = document.getElementById('rules-search');
+    
+    if (searchInput && searchDropdown) {
+      searchInput.addEventListener('input', (e) => {
+        const val = e.target.value.toLowerCase().trim();
+        searchDropdown.innerHTML = '';
+        if (!val) {
+          searchDropdown.classList.remove('active');
+          searchInput.parentElement.classList.remove('has-value');
+          return;
+        }
+        
+        searchInput.parentElement.classList.add('has-value');
+
+        const filtered = searchData.filter(item => 
+          item.question.toLowerCase().includes(val) || 
+          item.content.toLowerCase().includes(val) || 
+          (item.category && item.category.toLowerCase().includes(val))
+        );
+        
+        const catMap = {
+          'about': 'About The Fusion Funded',
+          'rules': 'Trading Rules and Guidelines',
+          'kyc': 'KYC (Know Your Customer)',
+          'withdrawals': 'Withdrawals',
+          'weekend': 'Weekend Trading',
+          'security': 'Account Security & Access Rules',
+          'refund': 'Refund Policies'
+        };
+
+        if (filtered.length > 0) {
+          searchDropdown.classList.add('active');
+          filtered.forEach(item => {
+            const a = document.createElement('a');
+            a.href = `trading_rules_detail.html?category=${item.category}&q=${encodeURIComponent(item.question)}`;
+            a.className = 'search-result-item';
+            
+            let catName = catMap[item.category] || item.category;
+            let titleHtml = item.question;
+            let contentHtml = item.content;
+            const matchIndex = contentHtml.toLowerCase().indexOf(val);
+            if (matchIndex > -1 && contentHtml.length > 100) {
+              const start = Math.max(0, matchIndex - 40);
+              const end = Math.min(contentHtml.length, matchIndex + val.length + 40);
+              contentHtml = (start > 0 ? "..." : "") + contentHtml.substring(start, end) + (end < contentHtml.length ? "..." : "");
+            } else if (contentHtml.length > 100) {
+              contentHtml = contentHtml.substring(0, 100) + '...';
+            }
+            
+            // Highlight match
+            const regex = new RegExp(`(${val})`, 'gi');
+            titleHtml = titleHtml.replace(regex, `<span style="color: #00d4ff;">$1</span>`);
+            contentHtml = contentHtml.replace(regex, `<span style="color: #00d4ff;">$1</span>`);
+            catName = catName.replace(regex, `<span style="color: #00d4ff;">$1</span>`);
+            
+            a.innerHTML = `
+              <div style="font-size: 0.75rem; color: #00d4ff; text-transform: uppercase; margin-bottom: 4px; letter-spacing: 0.5px; font-weight: 600;">${catName}</div>
+              <div style="font-weight: 600; color: #fff; margin-bottom: 5px; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem;">${titleHtml}</div>
+              <div style="font-size: 0.9rem; color: #8c92a4; line-height: 1.4;">${contentHtml}</div>
+            `;
+            searchDropdown.appendChild(a);
+          });
+        } else {
+          searchDropdown.classList.add('active');
+          const div = document.createElement('div');
+          div.className = 'search-result-item';
+          div.textContent = 'No matching rules found.';
+          div.style.cursor = 'default';
+          searchDropdown.appendChild(div);
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!searchInput.parentElement.contains(e.target)) {
+          searchDropdown.classList.remove('active');
+        } else if (searchInput.value.trim() !== '') {
+          searchDropdown.classList.add('active');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
