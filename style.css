@@ -216,6 +216,11 @@ button {
   transform: translateY(-2px);
 }
 
+/* Mobile-only CTA inside nav-links — hidden on desktop */
+.nav-cta-mobile {
+  display: none;
+}
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -2306,6 +2311,12 @@ button {
     padding: 14px 20px;
   }
 
+  .hero-content {
+    padding: 100px 20px 40px !important;
+    height: auto;
+    min-height: 100vh;
+  }
+
   .nav-links {
     display: none;
     border-radius: 0;
@@ -2342,12 +2353,41 @@ button {
     position: relative;
   }
 
+  /* Hide the top-bar CTA on mobile — it moves inside the menu */
   .nav-cta {
     display: none;
   }
 
-  .hero-content {
-    padding: 0 30px;
+  /* Mobile-only CTA inside nav-links — hidden on desktop */
+  .nav-cta-mobile {
+    display: none;
+  }
+
+  /* Show CTA inside the open menu overlay */
+  .nav-links.open .nav-cta-mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-ui);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 16px 48px;
+    background: linear-gradient(135deg, rgba(30, 140, 255, 0.9), rgba(0, 90, 210, 0.85));
+    color: #fff;
+    border-radius: 100px;
+    border: 1px solid rgba(100, 180, 255, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 0 28px rgba(0, 120, 255, 0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+    text-decoration: none;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    margin-top: 8px;
+  }
+
+  .nav-links.open .nav-cta-mobile:hover {
+    box-shadow: 0 0 44px rgba(0, 120, 255, 0.75), inset 0 1px 0 rgba(255,255,255,0.2);
+    transform: translateY(-2px);
   }
 
   .hero-split {
@@ -2359,6 +2399,7 @@ button {
   .hero-left,
   .hero-right {
     max-width: 100%;
+    width: 100%;
   }
 
   .hero-right {
@@ -2367,7 +2408,7 @@ button {
   }
 
   .container {
-    padding: 0 30px;
+    padding: 0 20px;
   }
 
   .plan-tabs {
@@ -2377,7 +2418,15 @@ button {
 
 @media (max-width: 640px) {
   .hero-title {
-    font-size: clamp(2.8rem, 12vw, 4.5rem);
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .hero-badge {
+    font-size: 0.7rem;
   }
 
   .highlights-grid {
