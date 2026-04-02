@@ -20,7 +20,7 @@
   let framesLoaded = 0;
   let animationReady = false;
   let currentFrame = 0;
-  let autoPlayInterval = null;
+  let targetFrame = 0;       // scroll sets this; RAF lerps toward it
   let isParallaxMode = false;
 
   function padNum(n) {
@@ -54,11 +54,13 @@
   /* ---------- Hero Canvas ---------- */
   const heroCanvas = document.getElementById('hero-canvas');
   const heroCtx = heroCanvas ? heroCanvas.getContext('2d') : null;
+  if (heroCtx) { heroCtx.imageSmoothingEnabled = true; heroCtx.imageSmoothingQuality = 'high'; }
 
   function resizeHeroCanvas() {
     if (!heroCanvas) return;
     heroCanvas.width = window.innerWidth;
     heroCanvas.height = window.innerHeight;
+    if (heroCtx) { heroCtx.imageSmoothingEnabled = true; heroCtx.imageSmoothingQuality = 'high'; }
   }
 
   function drawHeroFrame(index) {
@@ -69,8 +71,6 @@
     const iw = img.naturalWidth || img.width;
     const ih = img.naturalHeight || img.height;
     if (!iw || !ih) return;
-
-    // Cover fill (object-fit: cover)
     const scale = Math.max(cw / iw, ch / ih);
     const sw = iw * scale;
     const sh = ih * scale;
@@ -107,17 +107,30 @@
     dividerCtx.drawImage(img, sx, sy, sw, sh);
   }
 
-  /* ---------- Animation Loop ---------- */
-  let lastTime = 0;
-  const frameDuration = 1000 / FPS;
+  /* ---------- Animation Loop ----------
+     Scroll sets targetFrame. Each RAF tick lerps currentFrame toward it,
+     only repainting when the frame actually changes.               */
   let rafId = null;
+  let lastDrawnFrame = -1;
 
-  function animate(timestamp) {
-    if (!animationReady) { rafId = requestAnimationFrame(animate); return; }
-    // Only redraw current frame — no auto-advance; scroll drives the frame
-    drawHeroFrame(currentFrame);
-    drawDividerFrame(currentFrame);
+  function animate() {
     rafId = requestAnimationFrame(animate);
+    if (!animationReady) return;
+
+    // Smooth lerp: close gap by 18% each frame (~60fps feels fluid)
+    const diff = targetFrame - currentFrame;
+    if (Math.abs(diff) > 0.1) {
+      currentFrame += diff * 0.18;
+    } else {
+      currentFrame = targetFrame;
+    }
+
+    const frameIdx = Math.round(currentFrame);
+    if (frameIdx === lastDrawnFrame) return;   // skip if nothing changed
+    lastDrawnFrame = frameIdx;
+
+    drawHeroFrame(frameIdx);
+    drawDividerFrame(frameIdx);
   }
 
   /* ---------- Parallax Frame Scrub ---------- */
@@ -144,16 +157,11 @@
       scrollInd.style.pointerEvents = scrollY < window.innerHeight ? 'auto' : 'none';
     }
 
-    // Scrub frames across the full 250vh scroll zone
+    // Map scroll position → target frame (RAF loop does the actual draw)
     if (scrollY < heroH) {
       isParallaxMode = true;
-      const progress = Math.min(scrollY / heroH, 20);
-      currentFrame = Math.floor(progress * (TOTAL_FRAMES - 1));
-      // Draw immediately on scroll for maximum smoothness
-      if (animationReady) {
-        drawHeroFrame(currentFrame);
-        drawDividerFrame(currentFrame);
-      }
+      const progress = Math.min(scrollY / heroH, 1);
+      targetFrame = Math.min(Math.floor(progress * (FRAME_COUNT - 1)), FRAME_COUNT - 1);
     } else {
       isParallaxMode = false;
     }
@@ -394,18 +402,17 @@
 
   // Show loading state then begin
   preloadFrames(() => {
-    // Draw first frame immediately
     drawHeroFrame(0);
     drawDividerFrame(0);
-    // Start animation loop
+    lastDrawnFrame = 0;
     rafId = requestAnimationFrame(animate);
   });
 
-  // Graceful fallback — start loop even if some frames fail
+  // Graceful fallback
   setTimeout(() => {
     if (!animationReady) {
       animationReady = true;
-      rafId = requestAnimationFrame(animate);
+      if (!rafId) rafId = requestAnimationFrame(animate);
     }
   }, 3000);
 
