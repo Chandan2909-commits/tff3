@@ -14,14 +14,16 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css?v=2" />
   <style>
+    /* ── Same background system as trading_rules.html: liquid-bg canvas via app.js ── */
     body { background: #000; }
 
+    /* ── HERO ── */
     .faq-hero {
       padding: 160px 0 60px;
       position: relative;
       z-index: 10;
       text-align: center;
-      background: #000;
+      background: transparent;
     }
     .faq-hero-title {
       font-family: 'Orbitron', sans-serif;
@@ -31,18 +33,30 @@
       color: #f0f8ff;
       margin-bottom: 16px;
     }
-    .faq-page-tag { display: inline-flex; align-items: center; gap: 8px; font-family: 'Rajdhani', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #00d4ff; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.25); padding: 6px 16px; border-radius: 100px; margin-bottom: 24px; }
-    .faq-page-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: #00d4ff; box-shadow: 0 0 10px #00d4ff; animation: pulse 1.5s ease-in-out infinite; }
+    .faq-page-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Rajdhani', sans-serif; font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase; color: #00d4ff;
+      background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.25);
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 24px;
+    }
+    .faq-page-tag-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #00d4ff; box-shadow: 0 0 10px #00d4ff;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
 
+    /* ── LAYOUT ── */
     .faq-container {
       display: flex;
       gap: 32px;
       margin-bottom: 80px;
       position: relative;
       z-index: 2;
-      background: #000;
+      background: transparent;
     }
 
+    /* ── SIDEBAR TABS — liquid glass ── */
     .faq-sidebar {
       width: 280px;
       display: flex;
@@ -51,10 +65,10 @@
       flex-shrink: 0;
     }
     .faq-tab {
-      background: rgba(7,13,20,0.75);
-      border: 1px solid rgba(0,212,255,0.1);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(0,212,255,0.12);
       padding: 14px 20px;
-      border-radius: 10px;
+      border-radius: 16px;
       color: #8bb8cc;
       font-family: 'Rajdhani', sans-serif;
       font-size: 1rem;
@@ -62,30 +76,34 @@
       letter-spacing: 0.04em;
       text-align: left;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-      backdrop-filter: blur(16px);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
     }
     .faq-tab:hover {
-      background: rgba(0,212,255,0.06);
-      border-color: rgba(0,212,255,0.25);
+      transform: translateY(-3px);
+      border-color: rgba(0,212,255,0.3);
+      box-shadow: 0 0 24px rgba(0,212,255,0.1), 0 12px 32px rgba(0,0,0,0.4);
       color: #f0f8ff;
     }
     .faq-tab.active {
-      border-color: rgba(0,212,255,0.5);
-      background: rgba(0,212,255,0.1);
+      border-color: rgba(0,212,255,0.4);
+      background: rgba(0,212,255,0.08);
       color: #f0f8ff;
-      box-shadow: 0 0 20px rgba(0,212,255,0.1), inset 0 1px 0 rgba(255,255,255,0.06);
+      box-shadow: 0 0 24px rgba(0,212,255,0.12), inset 0 1px 0 rgba(255,255,255,0.08);
     }
 
+    /* ── MAIN CONTENT PANEL — liquid glass ── */
     .faq-content-area {
       flex: 1;
-      background: rgba(7,13,20,0.6);
-      border: 1px solid rgba(0,212,255,0.1);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(0,212,255,0.12);
       border-radius: 16px;
       padding: 40px;
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
     }
     .faq-category-content {
       display: none;
@@ -107,12 +125,22 @@
       border-bottom: 1px solid rgba(0,212,255,0.12);
     }
 
+    /* ── ACCORDION ITEMS — liquid glass cards ── */
     .accordion-item {
       margin-bottom: 12px;
-      border: 1px solid rgba(0,212,255,0.1);
-      border-radius: 10px;
+      border: 1px solid rgba(0,212,255,0.12);
+      border-radius: 16px;
       overflow: hidden;
-      background: rgba(0,0,0,0.25);
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .accordion-item:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0,212,255,0.3);
+      box-shadow: 0 0 24px rgba(0,212,255,0.1), 0 12px 32px rgba(0,0,0,0.4);
     }
     .accordion-header {
       padding: 18px 22px;
@@ -120,10 +148,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(255,255,255,0.02);
+      background: rgba(255,255,255,0.025);
       transition: background 0.25s;
     }
-    .accordion-header:hover { background: rgba(0,212,255,0.04); }
+    .accordion-header:hover { background: rgba(0,212,255,0.05); }
     .accordion-header h3 {
       font-family: 'Rajdhani', sans-serif;
       font-size: 1.05rem;
@@ -140,8 +168,8 @@
       flex-shrink: 0;
     }
     .accordion-item.active .accordion-header {
-      background: rgba(0,212,255,0.06);
-      border-bottom: 1px solid rgba(0,212,255,0.1);
+      background: rgba(0,212,255,0.07);
+      border-bottom: 1px solid rgba(0,212,255,0.12);
     }
     .accordion-item.active .accordion-icon { transform: rotate(45deg); }
     .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
@@ -156,24 +184,18 @@
     .accordion-content-inner ul { margin-left: 20px; margin-bottom: 14px; }
     .accordion-content-inner li { margin-bottom: 6px; }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 992px) {
       .faq-container { flex-direction: column; }
       .faq-sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; }
-      .faq-tab {        flex: 1 1 calc(33.333% - 10px);
-        text-align: center;
-        padding: 12px;
-      }
+      .faq-tab { flex: 1 1 calc(33.333% - 10px); text-align: center; padding: 12px; }
     }
     @media (max-width: 768px) {
-      .faq-tab {
-        flex: 1 1 calc(50% - 10px);
-      }
-      .faq-content-area {
-        padding: 20px;
-      }
+      .faq-tab { flex: 1 1 calc(50% - 10px); }
+      .faq-content-area { padding: 20px; }
     }
-  /* Search Component */
 
+    /* ── SEARCH — liquid glass ── */
     .search-wrapper {
       position: relative;
       margin: 0 auto 40px auto;
@@ -192,206 +214,61 @@
       box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2), inset 0 0 0 1px #00d4ff;
     }
     .search-input {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       padding: 0 20px 0 54px;
-      background: transparent;
-      border: none;
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.1rem;
-      color: #fff;
-      outline: none;
-      border-radius: 28px;
+      background: transparent; border: none;
+      font-family: 'Rajdhani', sans-serif; font-size: 1.1rem;
+      color: #fff; outline: none; border-radius: 28px;
     }
-    .search-input::placeholder {
-      color: rgba(255, 255, 255, 0.5);
-      transition: opacity 0.3s ease;
-    }
+    .search-input::placeholder { color: rgba(255,255,255,0.45); transition: opacity 0.3s ease; }
     .search-icon {
-      position: absolute;
-      top: 50%;
-      left: 18px;
-      transform: translateY(-50%);
-      color: #b0b0b0;
-      pointer-events: none;
-      transition: color 0.3s ease;
+      position: absolute; top: 50%; left: 18px;
+      transform: translateY(-50%); color: #7aafc0;
+      pointer-events: none; transition: color 0.3s ease;
     }
-    .search-wrapper:focus-within .search-icon, .search-wrapper.has-value .search-icon {
-      color: #00d4ff;
-    }
+    .search-wrapper:focus-within .search-icon, .search-wrapper.has-value .search-icon { color: #00d4ff; }
     .search-dropdown {
-      position: absolute;
-      top: calc(100% + 15px);
-      left: 0;
-      width: 100%;
-      background: rgba(10, 14, 23, 0.95);
-      border: 1px solid rgba(0, 212, 255, 0.2);
+      position: absolute; top: calc(100% + 15px); left: 0; width: 100%;
+      background: rgba(5, 16, 32, 0.90);
+      border: 1px solid rgba(0, 212, 255, 0.20);
       border-radius: 24px;
-      backdrop-filter: blur(15px);
-      max-height: 300px;
-      overflow-y: auto;
-      display: none;
-      flex-direction: column;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(20px);
+      max-height: 300px; overflow-y: auto;
+      display: none; flex-direction: column;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.55);
       padding: 10px 0;
     }
-    .search-dropdown.active {
-      display: flex;
-    }
+    .search-dropdown.active { display: flex; }
     .search-result-item {
-      padding: 15px 20px;
-      color: #b0b0b0;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      transition: all 0.2s ease;
-      text-decoration: none;
-      display: block;
+      padding: 15px 20px; color: #9bb8cc; cursor: pointer;
+      font-family: 'Inter', sans-serif; font-size: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.2s ease; text-decoration: none; display: block;
     }
-    .search-result-item:last-child {
-      border-bottom: none;
-    }
-    .search-result-item:hover {
-      background: rgba(0, 212, 255, 0.1);
-      color: #fff;
-    }
-  
+    .search-result-item:last-child { border-bottom: none; }
+    .search-result-item:hover { background: rgba(0, 212, 255, 0.09); color: #fff; }
 
-    .rule-block {
-      margin-bottom: 20px;
-    }
-    .rule-block:last-child {
-      margin-bottom: 0;
-    }
+    /* ── RULE BLOCKS ── */
+    .rule-block { margin-bottom: 20px; }
+    .rule-block:last-child { margin-bottom: 0; }
     .rule-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #00d4ff;
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
+      font-family: 'Rajdhani', sans-serif; font-size: 1.15rem; font-weight: 700;
+      color: #00d4ff; margin-bottom: 6px; display: flex; align-items: center;
     }
     .rule-title::before {
-      content: '■';
-      color: #00d4ff;
-      font-size: 0.6rem;
-      margin-right: 10px;
-      opacity: 0.8;
+      content: '■'; color: #00d4ff; font-size: 0.6rem; margin-right: 10px; opacity: 0.8;
     }
     .rule-desc {
-      padding-left: 20px;
-      color: #8bb8cc;
-      border-left: 2px solid rgba(0, 212, 255, 0.2);
+      padding-left: 20px; color: #b0b0b0; border-left: 2px solid rgba(0, 212, 255, 0.2);
     }
 
-    /* ── override solid backgrounds so liquid-bg shows through ── */
-    .faq-hero   { background: transparent !important; }
-    .faq-container { background: transparent !important; }
-
-    /* ── sidebar tabs: liquid glass ── */
-    .faq-tab {
-      background: rgba(6,12,22,0.55) !important;
-      border: 1px solid rgba(0,212,255,0.12) !important;
-      backdrop-filter: blur(20px) saturate(180%) !important;
-      -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05) !important;
-      color: #8bb8cc !important;
-      border-radius: 10px !important;
-      font-family: 'Rajdhani', sans-serif !important;
-      font-size: 1rem !important;
-      font-weight: 600 !important;
-      letter-spacing: 0.04em !important;
-    }
-    .faq-tab:hover {
-      background: rgba(0,212,255,0.08) !important;
-      border-color: rgba(0,212,255,0.3) !important;
-      color: #f0f8ff !important;
-    }
-    .faq-tab.active {
-      background: rgba(0,212,255,0.12) !important;
-      border-color: rgba(0,212,255,0.55) !important;
-      color: #f0f8ff !important;
-      box-shadow: 0 0 24px rgba(0,212,255,0.15), inset 0 1px 0 rgba(255,255,255,0.08) !important;
-    }
-
-    /* ── content area: deep liquid glass matching compare-glass-inner ── */
-    .faq-content-area {
-      background: rgba(6,12,22,0.55) !important;
-      border: 1px solid rgba(0,212,255,0.14) !important;
-      border-radius: 18px !important;
-      backdrop-filter: blur(32px) saturate(200%) brightness(1.06) !important;
-      -webkit-backdrop-filter: blur(32px) saturate(200%) brightness(1.06) !important;
-      box-shadow: 0 8px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.07), inset 0 -1px 0 rgba(0,0,0,0.3) !important;
-      position: relative !important;
-    }
-    .faq-content-area::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,212,255,0.4), transparent);
-      border-radius: 18px 18px 0 0;
-      pointer-events: none;
-    }
-
-    /* ── category title: Orbitron ── */
-    .category-title {
-      font-family: 'Orbitron', sans-serif !important;
-      font-size: 1.5rem !important;
-      font-weight: 700 !important;
-      letter-spacing: -0.01em !important;
-      color: #f0f8ff !important;
-      border-bottom: 1px solid rgba(0,212,255,0.14) !important;
-    }
-
-    /* ── accordion items: glass ── */
-    .accordion-item {
-      background: rgba(0,0,0,0.2) !important;
-      border: 1px solid rgba(0,212,255,0.1) !important;
-      border-radius: 10px !important;
-      backdrop-filter: blur(8px) !important;
-    }
-    .accordion-header h3 {
-      font-family: 'Rajdhani', sans-serif !important;
-      font-size: 1.05rem !important;
-      font-weight: 600 !important;
-      letter-spacing: 0.03em !important;
-      color: #f0f8ff !important;
-    }
-    .accordion-header:hover { background: rgba(0,212,255,0.05) !important; }
-    .accordion-item.active .accordion-header { background: rgba(0,212,255,0.07) !important; border-bottom: 1px solid rgba(0,212,255,0.12) !important; }
-    .accordion-icon { text-shadow: 0 0 8px rgba(0,212,255,0.6) !important; }
-    .accordion-content-inner { color: #8bb8cc !important; font-size: 0.97rem !important; line-height: 1.75 !important; }
-
-    /* ── search: pill glass ── */
-    .search-wrapper {
-      background: rgba(6,12,22,0.75) !important;
-      border-radius: 100px !important;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(0,212,255,0.18) !important;
-      backdrop-filter: blur(16px) !important;
-      height: 52px !important;
-    }
-    .search-wrapper:focus-within, .search-wrapper.has-value {
-      box-shadow: 0 0 32px rgba(0,212,255,0.22), inset 0 0 0 1px #00d4ff !important;
-    }
-    .search-input { color: #f0f8ff !important; font-size: 1rem !important; }
-    .search-input::placeholder { color: rgba(255,255,255,0.35) !important; }
-    .search-icon { color: #3a6070 !important; }
-    .search-dropdown {
-      background: rgba(6,12,22,0.97) !important;
-      border: 1px solid rgba(0,212,255,0.2) !important;
-      border-radius: 16px !important;
-      backdrop-filter: blur(20px) !important;
-    }
-    .search-result-item { color: #8bb8cc !important; border-bottom: 1px solid rgba(0,212,255,0.07) !important; }
-    .search-result-item:hover { background: rgba(0,212,255,0.08) !important; color: #fff !important; }
-
-</style>
+  </style>
 </head>
 
 <body>
+
+  <!-- ===== GLOBAL LIQUID GRADIENT BG ===== -->
+  <canvas id="liquid-bg"></canvas>
 
   <!-- ===== NAVBAR ===== -->
   <nav id="navbar">
@@ -407,6 +284,7 @@
         <li><a href="trading_rules.html" class="nav-link">Trading Rules</a></li>
         <li><a href="affiliate_program.html" class="nav-link">Affiliates</a></li>
         <li><a href="contact_us.html" class="nav-link">Contact Us</a></li>
+        <li><a href="https://user.thefusionfunded.com/user/signup" class="nav-cta-mobile" target="_blank">Login / Sign Up</a></li>
       </ul>
       <a href="https://user.thefusionfunded.com/user/signup" class="nav-cta" id="nav-cta" target="_blank">Login / Sign Up</a>
       <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
@@ -419,6 +297,8 @@
   <div class="gradient-orb orb-1"></div>
   <div class="gradient-orb orb-2"></div>
   <div class="gradient-orb orb-3"></div>
+  <div class="gradient-orb orb-4"></div>
+  <div class="gradient-orb orb-5"></div>
 
   <!-- ===== HERO ===== -->
   <section class="faq-hero container">
@@ -1472,14 +1352,15 @@
           <p>At The Fusion Funded, we empower traders to unlock their full potential in the financial markets. We
             provide funded accounts and expert support to help you overcome financial barriers.</p>
           <div class="social-links">
-            <a href="https://www.instagram.com/thefusionfunded/" class="social-link" aria-label="Instagram" target="_blank">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="..."/></svg>
+            <a href="https://www.instagram.com/thefusionfunded/" class="social-link" aria-label="Instagram"
+              target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
             <a href="https://t.me/thefusionfunded" class="social-link" aria-label="Telegram" target="_blank">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="..."/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
             </a>
             <a href="https://wa.me/message/M3FHBYUPELBIJ1" class="social-link" aria-label="WhatsApp" target="_blank">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="..."/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             </a>
           </div>
         </div>
@@ -1489,7 +1370,6 @@
           <ul>
             <li><a href="trading_rules.html">Trading Rules</a></li>
             <li><a href="affiliate_program.html">Affiliate Program</a></li>
-
             <li><a href="contact_us.html">Contact Us</a></li>
           </ul>
         </div>
@@ -1503,7 +1383,9 @@
           </ul>
         </div>
       </div>
-            <div class="footer-disclaimer">
+
+      <!-- Risk Disclaimer -->
+      <div class="footer-disclaimer">
         <h5>Risk Disclosure</h5>
         <p>Trading in financial instruments carries a high level of risk to your capital, with the possibility of losing
           more than your initial investment. Trading in financial instruments may not be suitable for all investors and
@@ -1516,6 +1398,7 @@
           performance is not indicative of future real-world results.</p>
       </div>
 
+      <!-- Bottom Bar -->
       <div class="footer-bottom">
         <p>&copy; 2024 The Fusion Funded. All Rights Reserved.</p>
         <div class="footer-bottom-links">
@@ -1722,5 +1605,6 @@ const searchData = [
       });
     }
 </script>
+  <script src="app.js"></script>
 </body>
 </html>

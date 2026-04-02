@@ -1239,6 +1239,11 @@ button {
   color: var(--neon-blue);
 }
 
+.footer-col ul li {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
 .footer-bottom {
   padding-top: 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);

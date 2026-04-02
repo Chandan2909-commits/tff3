@@ -56,96 +56,94 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 /* ---- Hamburger / Mobile Menu ---- */
-const hamburger  = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobile-menu');
-const overlay    = document.getElementById('mobile-menu-overlay');
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
 
-function openMobileMenu() {
-  mobileMenu.classList.add('open');
-  overlay.classList.add('open');
-  hamburger.classList.add('open');
-  document.body.style.overflow = 'hidden';
+if (hamburger) {
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    const isOpen = navLinks.classList.contains('open');
+    hamburger.children[0].style.transform = isOpen ? 'rotate(45deg) translate(5px,5px)' : '';
+    hamburger.children[1].style.opacity = isOpen ? '0' : '';
+    hamburger.children[2].style.transform = isOpen ? 'rotate(-45deg) translate(5px,-5px)' : '';
+  });
+  navLinks.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      hamburger.children[0].style.transform = '';
+      hamburger.children[1].style.opacity = '';
+      hamburger.children[2].style.transform = '';
+    });
+  });
 }
 
-function closeMobileMenu() {
-  mobileMenu.classList.remove('open');
-  overlay.classList.remove('open');
-  hamburger.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-hamburger.addEventListener('click', () => {
-  mobileMenu.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
-});
-
-overlay.addEventListener('click', closeMobileMenu);
-
-document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMobileMenu));
-
-/* ---- Hero canvas — animated particle grid ---- */
-(function initHeroCanvas() {
-  const canvas = document.getElementById('hero-canvas');
+/* ===================================================
+   GLOBAL LIQUID GRADIENT BG — autonomous, mouse softly distorts
+   =================================================== */
+(function initLiquidBg() {
+  const canvas = document.getElementById('liquid-bg');
   if (!canvas) return;
-  const ctx    = canvas.getContext('2d');
-  let W, H, particles;
+  const ctx = canvas.getContext('2d');
+
+  let W, H;
+  let targetX = 0.5, targetY = 0.5;
+  let smoothX = 0.5, smoothY = 0.5;
+
+  // Each orb breathes autonomously; mouse adds a tiny nudge
+  const orbs = [
+    { bx:0.18, by:0.22, r:0.55, color:[0,180,255],  a:0.22, speed:0.00018, phase:0,   influence:0.04 },
+    { bx:0.82, by:0.35, r:0.50, color:[0,80,220],   a:0.18, speed:0.00022, phase:2.1, influence:0.03 },
+    { bx:0.50, by:0.72, r:0.60, color:[0,212,255],  a:0.16, speed:0.00015, phase:4.2, influence:0.05 },
+    { bx:0.25, by:0.80, r:0.40, color:[0,50,180],   a:0.14, speed:0.00028, phase:1.0, influence:0.02 },
+    { bx:0.75, by:0.65, r:0.45, color:[0,160,255],  a:0.13, speed:0.00020, phase:3.3, influence:0.03 },
+  ];
+
+  document.addEventListener('mousemove', e => {
+    targetX = e.clientX / W;
+    targetY = e.clientY / H;
+  });
 
   function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-    buildParticles();
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
   }
+  resize();
+  window.addEventListener('resize', resize);
 
-  function buildParticles() {
-    const count = Math.floor((W * H) / 14000);
-    particles = Array.from({ length: count }, () => ({
-      x:  Math.random() * W,
-      y:  Math.random() * H,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
-      r:  Math.random() * 1.5 + 0.5,
-      a:  Math.random(),
-    }));
-  }
+  function draw(ts) {
+    const t = ts * 0.001;
+    // Very slow mouse lerp — subtle distortion only
+    smoothX += (targetX - smoothX) * 0.012;
+    smoothY += (targetY - smoothY) * 0.012;
 
-  function draw() {
     ctx.clearRect(0, 0, W, H);
 
-    // Draw connections
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx   = particles[i].x - particles[j].x;
-        const dy   = particles[i].y - particles[j].y;
-        const dist = Math.hypot(dx, dy);
-        if (dist < 120) {
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(0,212,255,${0.12 * (1 - dist / 120)})`;
-          ctx.lineWidth = 0.6;
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.stroke();
-        }
-      }
-    }
-
-    // Draw particles
-    particles.forEach(p => {
+    orbs.forEach(o => {
+      // Autonomous breathing drift
+      const drift  = Math.sin(t * o.speed * 1000 + o.phase);
+      const drift2 = Math.cos(t * o.speed * 800  + o.phase + 1);
+      // Breathing scale + alpha pulse
+      const breathe = 1 + 0.10 * Math.sin(t * o.speed * 600 + o.phase + 2);
+      const alphaPulse = o.a * (0.7 + 0.3 * Math.sin(t * o.speed * 400 + o.phase + 3));
+      // Mouse adds only a tiny nudge on top of the autonomous motion
+      const mx = o.bx + drift * 0.12 + (smoothX - 0.5) * o.influence;
+      const my = o.by + drift2 * 0.10 + (smoothY - 0.5) * o.influence;
+      const cx = mx * W, cy = my * H;
+      const radius = o.r * breathe * Math.max(W, H);
+      const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+      const [r, g2, b] = o.color;
+      g.addColorStop(0,   `rgba(${r},${g2},${b},${alphaPulse})`);
+      g.addColorStop(0.4, `rgba(${r},${g2},${b},${alphaPulse * 0.5})`);
+      g.addColorStop(1,   `rgba(${r},${g2},${b},0)`);
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0,212,255,${p.a * 0.7})`;
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.fillStyle = g;
       ctx.fill();
-
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0 || p.x > W) p.vx *= -1;
-      if (p.y < 0 || p.y > H) p.vy *= -1;
     });
 
     requestAnimationFrame(draw);
   }
-
-  resize();
-  draw();
-  window.addEventListener('resize', resize);
+  requestAnimationFrame(draw);
 })();
 
 /* ---- Scroll Reveal ---- */
