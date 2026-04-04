@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="The Fusion Funded — Where innovation, expertise, and partnership are the cornerstones of success. Get funded and trade forex, crypto, indices with up to $200K capital." />
+    content="The Fusion Funded â€” Where innovation, expertise, and partnership are the cornerstones of success. Get funded and trade forex, crypto, indices with up to $200K capital." />
   <title>The Fusion Funded | Prop Trading Firm</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -152,13 +152,13 @@
           <div class="htu-step" data-reveal-left>
             <div>
               <h4>Create Your Account</h4>
-              <p>Sign up on our platform in minutes. No complex paperwork — just your details and you're in.</p>
+              <p>Sign up on our platform in minutes. No complex paperwork â€” just your details and you're in.</p>
             </div>
           </div>
           <div class="htu-step" data-reveal-left>
             <div>
               <h4>Choose a Challenge</h4>
-              <p>Pick a plan that suits your trading style — Step 1, Step 2, HFT, or HFT 2.0.</p>
+              <p>Pick a plan that suits your trading style â€” Step 1, Step 2, HFT, or HFT 2.0.</p>
             </div>
           </div>
           <div class="htu-step" data-reveal-left>
@@ -173,13 +173,9 @@
         <div class="phone-mockup">
           <div class="phone-speaker"></div>
           <div class="phone-screen">
-            <iframe
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0"
-              title="How to use The Fusion Funded"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
+            <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;border-radius:12px;">
+              <source src="mobile_vid.mp4" type="video/mp4">
+            </video>
           </div>
           <div class="phone-home-btn"></div>
         </div>
@@ -193,7 +189,7 @@
       <div class="section-header" data-reveal>
         <span class="section-tag">Key Highlights</span>
         <h2 class="section-title">More Than Just a <span class="gradient-text">Prop Firm</span></h2>
-        <p class="section-desc">The Fusion Funded — we are your partner in forex trading success. By providing funded
+        <p class="section-desc">The Fusion Funded â€” we are your partner in forex trading success. By providing funded
           accounts and expert support, we help you overcome financial barriers and reach your trading potential.</p>
       </div>
       <div class="highlights-grid">
@@ -239,7 +235,7 @@
           </div>
           <div class="why-card" data-reveal-left>
             <h3>Guaranteed Payouts</h3>
-            <p>Receive your payment within 24 hours. No reward denials — ever. Your profits, your money.</p>
+            <p>Receive your payment within 24 hours. No reward denials â€” ever. Your profits, your money.</p>
           </div>
           <div class="why-card" data-reveal-left>
             <h3>24/7 Support</h3>
@@ -794,9 +790,10 @@
         <!-- desc -->
         <p style="font-family:'Inter',sans-serif;font-size:0.95rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-bottom:28px;">Enter your email for a chance to win our exclusive 100k giveaway. Don't miss out on this incredible opportunity!</p>
         <!-- email input -->
-        <input type="email" placeholder="Enter your email" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(0,212,255,0.25);border-radius:8px;padding:14px 18px;font-family:'Inter',sans-serif;font-size:0.95rem;color:#fff;outline:none;margin-bottom:14px;box-sizing:border-box;transition:border-color 0.3s;" onfocus="this.style.borderColor='rgb(50,49,196)'" onblur="this.style.borderColor='rgba(0,212,255,0.25)'" />
+        <input type="email" id="giveaway-email" placeholder="Enter your email" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(0,212,255,0.25);border-radius:8px;padding:14px 18px;font-family:'Inter',sans-serif;font-size:0.95rem;color:#fff;outline:none;margin-bottom:14px;box-sizing:border-box;transition:border-color 0.3s;" onfocus="this.style.borderColor='rgb(50,49,196)'" onblur="this.style.borderColor='rgba(0,212,255,0.25)'" />
         <!-- submit btn -->
-        <button style="width:100%;background:rgb(50,49,196);color:#fff;border:none;border-radius:8px;padding:16px;font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:box-shadow 0.3s,transform 0.3s;box-shadow:0 0 24px rgba(50,49,196,0.5);" onmouseover="this.style.boxShadow='0 0 40px rgba(50,49,196,0.8)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='0 0 24px rgba(50,49,196,0.5)';this.style.transform='translateY(0)'">Enter Giveaway</button>
+        <button id="giveaway-btn" onclick="submitGiveaway()" style="width:100%;background:rgb(50,49,196);color:#fff;border:none;border-radius:8px;padding:16px;font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:box-shadow 0.3s,transform 0.3s;box-shadow:0 0 24px rgba(50,49,196,0.5);" onmouseover="this.style.boxShadow='0 0 40px rgba(50,49,196,0.8)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='0 0 24px rgba(50,49,196,0.5)';this.style.transform='translateY(0)'">Enter Giveaway</button>
+        <p id="giveaway-msg" style="font-family:'Inter',sans-serif;font-size:0.82rem;margin-top:10px;min-height:18px;color:rgba(255,255,255,0.5);"></p>
         <!-- terms -->
         <p style="font-family:'Inter',sans-serif;font-size:0.72rem;color:rgba(255,255,255,0.3);margin-top:14px;">By entering, you agree to our terms and conditions.</p>
       </div>
@@ -810,6 +807,37 @@
     @keyframes traceGift { to { stroke-dashoffset: 0; } }
     @keyframes popGiftDot { to { opacity: 1; } }
   </style>
+  <script>
+    const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyVQ6E5-fQKUj_Ws_XJ09rk7HagUnA4wGibZyQHFH45bO3Yr5HcUHo_nVas3xu4HnTu/exec';
+
+    function submitGiveaway() {
+      var email = document.getElementById('giveaway-email').value.trim();
+      var msg = document.getElementById('giveaway-msg');
+      var btn = document.getElementById('giveaway-btn');
+
+      if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+        msg.style.color = '#f87171';
+        msg.textContent = 'Please enter a valid email address.';
+        return;
+      }
+
+      btn.textContent = 'Submitting...';
+      btn.disabled = true;
+      msg.textContent = '';
+
+      fetch(SHEET_URL + '?email=' + encodeURIComponent(email), { method: 'GET', mode: 'no-cors' })
+        .finally(function() {
+          msg.style.color = '#4ade80';
+          msg.textContent = "You're entered! Good luck!";
+          btn.textContent = 'Entered!';
+          document.getElementById('giveaway-email').value = '';
+          setTimeout(function() {
+            document.getElementById('giveaway-overlay').style.display = 'none';
+          }, 2000);
+        });
+    }
+  </script>
 </body>
 
 </html>
+

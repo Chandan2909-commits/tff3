@@ -749,6 +749,7 @@ button {
    ============================================================ */
 .plans-section {
   background: transparent;
+  scroll-behavior: auto;
 }
 
 .plans-grid {
@@ -1710,8 +1711,24 @@ button {
     transparent 360deg
   );
   animation: pgtSpin 12s linear infinite;
-  overflow-x: auto;
+  overflow: visible;
   scrollbar-width: none;
+}
+
+.plan-glass-inner {
+  position: relative;
+  z-index: 1;
+  border-radius: 21px;
+  background: rgba(6, 14, 28, 0.72);
+  backdrop-filter: blur(32px) saturate(200%) brightness(1.08);
+  -webkit-backdrop-filter: blur(32px) saturate(200%) brightness(1.08);
+  overflow: hidden;
+  box-shadow:
+    0 8px 60px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.07),
+    inset 0 -1px 0 rgba(0,0,0,0.4);
+  min-width: unset;
+  width: 100%;
 }
 
 .plan-glass-wrap::-webkit-scrollbar {
@@ -1786,7 +1803,7 @@ button {
 /* Rows */
 .pgt-row {
   display: grid;
-  grid-template-columns: 220px repeat(6, 1fr);
+  grid-template-columns: 180px repeat(6, 1fr);
   border-bottom: 1px solid rgba(255,255,255,0.04);
   transition: background 0.2s;
 }
