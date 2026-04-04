@@ -6,11 +6,11 @@
 
 /* ---------- CSS Custom Properties (mirrors style.css) ---------- */
 :root {
-  --neon-blue: #00d4ff;
-  --neon-blue-dim: #0099cc;
-  --neon-blue-dark: #004466;
-  --neon-glow: #00d4ff80;
-  --neon-glow-strong: #00d4ffcc;
+  --neon-blue: rgb(120, 115, 245);
+  --neon-blue-dim: rgba(120, 115, 245, 0.8);
+  --neon-blue-dark: rgba(120, 115, 245, 0.5);
+  --neon-glow: rgba(120, 115, 245, 0.4);
+  --neon-glow-strong: rgba(120, 115, 245, 0.7);
   --bg-black: #000000;
   --bg-dark: #030508;
   --bg-card: #070d14;
@@ -18,8 +18,8 @@
   --text-primary: #f0f8ff;
   --text-secondary: #8bb8cc;
   --text-muted: #3a6070;
-  --gradient-blue: linear-gradient(135deg, #00d4ff 0%, #0077aa 50%, #003366 100%);
-  --gradient-text: linear-gradient(90deg, #00d4ff, #0aefff, #00d4ff);
+  --gradient-blue: linear-gradient(135deg, rgb(120, 115, 245) 0%, rgba(120, 115, 245, 0.8) 50%, rgba(120, 115, 245, 0.4) 100%);
+  --gradient-text: linear-gradient(90deg, rgb(130, 125, 255), rgb(160, 155, 255), rgb(130, 125, 255));
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --radius: 12px;
   --font-head: 'Orbitron', monospace;
@@ -268,7 +268,7 @@ button {
   font-weight: 700;
   letter-spacing: 0.06em;
   padding: 14px 36px;
-  background: linear-gradient(135deg, rgba(30, 140, 255, 0.9), rgba(0, 90, 210, 0.85));
+  background: rgba(50, 45, 175, 1);
   color: #fff;
   border-radius: 100px;
   border: 1px solid rgba(100, 180, 255, 0.3);
@@ -628,7 +628,7 @@ button {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   padding: 18px 44px;
-  background: linear-gradient(135deg, #00d4ff, #0077aa);
+  background: rgba(50, 45, 175, 1);
   color: #000;
   border-radius: 6px;
   transition: box-shadow var(--transition), transform var(--transition);
@@ -1150,7 +1150,7 @@ button {
     font-weight: 700;
     letter-spacing: 0.08em;
     padding: 16px 48px;
-    background: linear-gradient(135deg, rgba(30, 140, 255, 0.9), rgba(0, 90, 210, 0.85));
+    background: rgba(50, 45, 175, 1);
     color: #fff;
     border-radius: 100px;
     border: 1px solid rgba(100, 180, 255, 0.35);
@@ -1190,3 +1190,5 @@ button {
   .whatsapp-float { bottom: 20px; right: 20px; padding: 12px 16px; }
   .whatsapp-float span { display: none; }
 }
+
+.nav-logo-img { height: 35px; width: auto; object-fit: contain; }
