@@ -169,17 +169,19 @@ if (hamburger) {
   const feedback = document.getElementById('form-feedback');
   const submitBtn= document.getElementById('btn-submit');
 
+  const CONTACT_URL = 'https://script.google.com/macros/s/AKfycbxR48jw8ydufaAvaK5g6Hg5ha9G-4OCnDz1ODyTNNKxN7zizZ1qWy18VcOtA30H9yLEtQ/exec';
+
   if (!form) return;
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
     feedback.className = 'form-feedback';
     feedback.textContent = '';
 
-    // Basic validation
     const firstName = form.first_name.value.trim();
     const lastName  = form.last_name.value.trim();
     const email     = form.email.value.trim();
+    const subject   = form.subject ? form.subject.value.trim() : '';
     const message   = form.message.value.trim();
 
     if (!firstName || !lastName || !email || !message) {
@@ -194,27 +196,23 @@ if (hamburger) {
       return;
     }
 
-    // Simulate submission (replace this block with your real API call)
     submitBtn.disabled = true;
     submitBtn.querySelector('span').textContent = 'Sending…';
 
-    await new Promise(r => setTimeout(r, 1400)); // simulate network
+    var params = '?type=contact'
+      + '&firstName=' + encodeURIComponent(firstName)
+      + '&lastName='  + encodeURIComponent(lastName)
+      + '&email='     + encodeURIComponent(email)
+      + '&subject='   + encodeURIComponent(subject)
+      + '&message='   + encodeURIComponent(message);
 
-    /*
-    // Example: real API call
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ firstName, lastName, email, subject: form.subject.value, message }),
-    });
-    if (!res.ok) throw new Error('Server error');
-    */
-
-    submitBtn.disabled = false;
-    submitBtn.querySelector('span').textContent = 'Send Message';
-
-    feedback.textContent = '✓ Thank you! Your message has been sent. We\'ll be in touch within 50 seconds.';
-    feedback.classList.add('success');
-    form.reset();
+    fetch(CONTACT_URL + params, { method: 'GET', mode: 'no-cors' })
+      .finally(function() {
+        submitBtn.disabled = false;
+        submitBtn.querySelector('span').textContent = 'Send Message';
+        feedback.textContent = '✓ Thank you! Your message has been sent. We\'ll be in touch within 50 seconds.';
+        feedback.classList.add('success');
+        form.reset();
+      });
   });
 })();

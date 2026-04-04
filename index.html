@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -141,9 +141,10 @@
   </div>
 
   <!-- ===== HOW TO USE THIS SITE ===== -->
-  <section id="how-to-use" class="section how-to-use-section">
-    <div class="section-bg-glow how-to-use-glow"></div>
-    <div class="container how-to-use-container">
+  <section id="how-to-use" class="section how-to-use-section" style="position:relative;overflow:hidden;">
+    <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:1;"><source src="mobile_vid.mp4" type="video/mp4"></video>
+    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.15);z-index:1;"></div>
+    <div class="container" style="position:relative;z-index:2;max-width:700px;text-align:left;">
       <div class="how-to-use-left">
         <span class="section-tag">Getting Started</span>
         <h2 class="section-title" data-reveal>How To Use <span class="gradient-text">This Site</span></h2>
@@ -167,17 +168,6 @@
               <p>Hit your profit targets, pass the challenge, and receive your funded account with fast payouts.</p>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="how-to-use-right" data-reveal-right>
-        <div class="phone-mockup">
-          <div class="phone-speaker"></div>
-          <div class="phone-screen">
-            <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;border-radius:12px;">
-              <source src="mobile_vid.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="phone-home-btn"></div>
         </div>
       </div>
     </div>
@@ -808,7 +798,7 @@
     @keyframes popGiftDot { to { opacity: 1; } }
   </style>
   <script>
-    const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyVQ6E5-fQKUj_Ws_XJ09rk7HagUnA4wGibZyQHFH45bO3Yr5HcUHo_nVas3xu4HnTu/exec';
+    const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxR48jw8ydufaAvaK5g6Hg5ha9G-4OCnDz1ODyTNNKxN7zizZ1qWy18VcOtA30H9yLEtQ/exec';
 
     function submitGiveaway() {
       var email = document.getElementById('giveaway-email').value.trim();
