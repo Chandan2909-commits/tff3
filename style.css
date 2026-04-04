@@ -6,10 +6,10 @@
 /* ---------- CSS Custom Properties ---------- */
 :root {
   --neon-blue: rgb(50, 49, 196);
-  --neon-blue-dim: rgba(50, 49, 196, 0.8);
-  --neon-blue-dark: rgba(50, 49, 196, 0.5);
-  --neon-glow: rgba(50, 49, 196, 0.4);
-  --neon-glow-strong: rgba(50, 49, 196, 0.7);
+  --neon-blue-dim: rgb(50, 49, 196);
+  --neon-blue-dark:rgb(50, 49, 196);
+  /* --neon-glow: rgba(31, 31, 210, 0.4); */
+  /* --neon-glow-strong: rgba(50, 49, 196, 0.7); */
   --bg-black: #000000;
   --bg-dark: #030508;
   --bg-card: #070d14;
@@ -17,8 +17,8 @@
   --text-primary: #f0f8ff;
   --text-secondary: #8bb8cc;
   --text-muted: #3a6070;
-  --gradient-blue: linear-gradient(135deg, rgb(50, 49, 196) 0%, rgba(50, 49, 196, 0.8) 50%, rgba(50, 49, 196, 0.4) 100%);
-  --gradient-text: linear-gradient(90deg, rgb(50, 49, 196), #6b6ae8, rgb(50, 49, 196));
+  --gradient-blue: linear-gradient(135deg, rgb(45, 45, 209) 0%, rgba(34, 34, 201, 0.8) 50%, rgba(44, 44, 213, 0.4) 100%);
+  --gradient-text: rgba(22, 58, 218, 0.944);
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --radius: 12px;
   --font-head: 'Orbitron', monospace;
@@ -315,7 +315,7 @@ button {
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--neon-blue);
+  color: #ffffff;
   background: rgba(0, 212, 255, 0.08);
   border: 1px solid rgba(0, 212, 255, 0.25);
   padding: 6px 16px;
@@ -365,7 +365,7 @@ button {
 }
 
 .neon-highlight {
-  color: var(--neon-blue);
+  color: rgb(50, 49, 196);
   text-shadow: 0 0 10px var(--neon-glow);
 }
 
@@ -523,7 +523,7 @@ button {
   font-weight: 600;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--neon-blue);
+  color: #ffffff;
   background: rgba(0, 212, 255, 0.07);
   border: 1px solid rgba(0, 212, 255, 0.2);
   padding: 5px 16px;
@@ -1767,16 +1767,16 @@ button {
 .plan-table-label {
   display: inline-block;
   font-family: var(--font-head);
-  font-size: 0.78rem;
+  font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--neon-blue);
+  color: #ffffff;
   background: rgba(0,212,255,0.07);
   border: 1px solid rgba(0,212,255,0.25);
-  padding: 6px 20px;
+  padding: 10px 32px;
   border-radius: 100px;
-  text-shadow: 0 0 12px rgba(0,212,255,0.4);
+  text-shadow: none;
   margin-bottom: 32px;
 }
 
@@ -1817,8 +1817,8 @@ button {
   font-family: var(--font-head);
   font-size: 1rem;
   font-weight: 700;
-  color: var(--neon-blue);
-  text-shadow: 0 0 10px rgba(0,212,255,0.4);
+  color: #ffffff;
+  text-shadow: none;
   padding: 20px 12px;
 }
 
@@ -1923,7 +1923,7 @@ button {
 .hero-feat-icon svg {
   width: 18px;
   height: 18px;
-  stroke: var(--neon-blue);
+  stroke: #ffffff;
 }
 
 .hero-feat-card span {
@@ -1961,7 +1961,7 @@ button {
   font-family: var(--font-head);
   font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 700;
-  color: var(--text-primary);
+  color: #ffffff;
   text-align: center;
   line-height: 1.2;
   margin-bottom: 60px;
@@ -2071,16 +2071,41 @@ button {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--neon-blue);
+  color: #ffffff;
   text-align: center;
   line-height: 1.4;
-  text-shadow: 0 0 14px rgba(0,212,255,0.5);
+  text-shadow: none;
+}
+
+.cg-others-bubbles {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.cg-bubble {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cg-bubble svg {
+  width: 14px;
+  height: 14px;
+  stroke: rgba(255,255,255,0.45);
 }
 
 .cg-others-title {
   color: rgba(255,255,255,0.3);
   text-shadow: none;
-  padding-top: 50px;
+  padding-top: 0;
 }
 
 .cg-header-row .cg-col-tff,
@@ -2115,14 +2140,14 @@ button {
   font-family: var(--font-ui);
   font-size: 1.08rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: #ffffff;
   height: 64px;
 }
 
 .cg-col-label svg {
   width: 17px;
   height: 17px;
-  stroke: rgba(0,212,255,0.55);
+  stroke: rgba(255,255,255,0.6);
   flex-shrink: 0;
 }
 
@@ -2240,8 +2265,8 @@ button {
   font-family: var(--font-head);
   font-size: 1.6rem;
   font-weight: 900;
-  color: var(--neon-blue);
-  text-shadow: 0 0 15px var(--neon-glow);
+  color: #ffffff;
+  text-shadow: none;
   margin-bottom: 6px;
 }
 
