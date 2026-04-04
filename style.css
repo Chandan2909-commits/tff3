@@ -283,7 +283,7 @@ button {
   display: flex;
   align-items: center;
   animation: heroEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
-  font-size: 90%;
+  font-size: 75%;
 }
 
 .hero-split {
@@ -335,7 +335,7 @@ button {
 
 .hero-title {
   font-family: var(--font-head);
-  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-size: clamp(2.2rem, 5.5vw, 4.5rem);
   font-weight: 900;
   line-height: 0.95;
   letter-spacing: -0.02em;
