@@ -1815,7 +1815,7 @@ button {
 
 .pgt-head .pgt-cell {
   font-family: var(--font-head);
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--neon-blue);
   text-shadow: 0 0 10px rgba(0,212,255,0.4);
@@ -1825,7 +1825,7 @@ button {
 .pgt-head .pgt-label {
   color: var(--text-secondary);
   text-shadow: none;
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   letter-spacing: 0.18em;
 }
 
@@ -1836,7 +1836,7 @@ button {
   justify-content: center;
   padding: 18px 12px;
   font-family: var(--font-ui);
-  font-size: 0.95rem;
+  font-size: 1.08rem;
   font-weight: 600;
   color: var(--text-primary);
   text-align: center;
@@ -1845,7 +1845,7 @@ button {
 .pgt-label {
   justify-content: flex-start;
   font-family: var(--font-ui);
-  font-size: 0.78rem;
+  font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -2113,7 +2113,7 @@ button {
   align-items: center;
   gap: 12px;
   font-family: var(--font-ui);
-  font-size: 0.93rem;
+  font-size: 1.08rem;
   font-weight: 500;
   color: var(--text-secondary);
   height: 64px;
@@ -2138,7 +2138,7 @@ button {
 
 .cg-label {
   font-family: var(--font-ui);
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
