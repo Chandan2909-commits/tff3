@@ -5,11 +5,11 @@
 
 /* ---------- CSS Custom Properties ---------- */
 :root {
-  --neon-blue: #5571ed;
-  --neon-blue-dim: rgba(85, 113, 237, 0.8);
-  --neon-blue-dark: rgba(85, 113, 237, 0.5);
-  --neon-glow: rgba(85, 113, 237, 0.4);
-  --neon-glow-strong: rgba(85, 113, 237, 0.7);
+  --neon-blue: rgb(50, 49, 196);
+  --neon-blue-dim: rgba(50, 49, 196, 0.8);
+  --neon-blue-dark: rgba(50, 49, 196, 0.5);
+  --neon-glow: rgba(50, 49, 196, 0.4);
+  --neon-glow-strong: rgba(50, 49, 196, 0.7);
   --bg-black: #000000;
   --bg-dark: #030508;
   --bg-card: #070d14;
@@ -17,8 +17,8 @@
   --text-primary: #f0f8ff;
   --text-secondary: #8bb8cc;
   --text-muted: #3a6070;
-  --gradient-blue: linear-gradient(135deg, #5571ed 0%, rgba(85, 113, 237, 0.8) 50%, rgba(85, 113, 237, 0.4) 100%);
-  --gradient-text: linear-gradient(90deg, #5571ed, #7a91fc, #5571ed);
+  --gradient-blue: linear-gradient(135deg, rgb(50, 49, 196) 0%, rgba(50, 49, 196, 0.8) 50%, rgba(50, 49, 196, 0.4) 100%);
+  --gradient-text: linear-gradient(90deg, rgb(50, 49, 196), #6b6ae8, rgb(50, 49, 196));
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --radius: 12px;
   --font-head: 'Orbitron', monospace;
@@ -199,7 +199,7 @@ button {
   font-weight: 700;
   letter-spacing: 0.06em;
   padding: 14px 36px;
-  background: #5571ed;
+  background: rgb(50, 49, 196);
   color: #fff;
   border-radius: 100px;
   border: 1px solid rgba(100, 180, 255, 0.3);
@@ -387,7 +387,7 @@ button {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 16px 36px;
-  background: #5571ed;
+  background: rgb(50, 49, 196);
   color: #000;
   border-radius: 4px;
   position: relative;
@@ -784,7 +784,7 @@ button {
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  background: #5571ed;
+  background: rgb(50, 49, 196);
   color: #000;
   padding: 6px 18px;
   border-radius: 0 var(--radius) 0 var(--radius);
@@ -870,8 +870,8 @@ button {
 }
 
 .plan-card.featured .btn-plan {
-  background: #5571ed;
-  color: #000;
+  background: rgb(50, 49, 196);
+  color: #fff;
   border-color: transparent;
 }
 
@@ -1072,7 +1072,7 @@ button {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   padding: 18px 40px;
-  background: #5571ed;
+  background: rgb(50, 49, 196);
   color: #000;
   border-radius: 6px;
   transition: box-shadow var(--transition), transform var(--transition);
@@ -1680,8 +1680,8 @@ button {
 }
 
 .plan-tab.active {
-  background: #5571ed;
-  color: #000;
+  background: rgb(50, 49, 196);
+  color: #fff;
   border-color: transparent;
   box-shadow: 0 0 20px var(--neon-glow);
 }
@@ -2379,7 +2379,7 @@ button {
     font-weight: 700;
     letter-spacing: 0.08em;
     padding: 16px 48px;
-    background: #5571ed;
+    background: rgb(50, 49, 196);
     color: #fff;
     border-radius: 100px;
     border: 1px solid rgba(100, 180, 255, 0.35);
