@@ -405,7 +405,7 @@
     </div>
   </section>
     <!-- ===== HUNT WITH US CTA BANNER ===== -->
-  <section class="container" style="margin-bottom: 60px; position: relative; z-index: 2;">
+  <section id="hunt-banner" class="container" style="margin-bottom: 60px; position: relative; z-index: 2;">
     <div style="position:relative;border-radius:20px;padding:1.5px;background:conic-gradient(from 0deg,transparent 0deg,rgba(0,212,255,0.7) 60deg,rgba(0,80,200,0.4) 120deg,transparent 180deg,rgba(0,212,255,0.5) 240deg,transparent 300deg,transparent 360deg);animation:cgSpin 12s linear infinite;overflow:hidden;">
       <div style="border-radius:19px;background:rgba(6,14,28,0.85);backdrop-filter:blur(32px) saturate(180%);-webkit-backdrop-filter:blur(32px) saturate(180%);padding:48px 52px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;box-shadow:0 8px 60px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.07);position:relative;overflow:hidden;">
         <!-- shimmer line -->
@@ -500,6 +500,17 @@
 
 
   <style>
+    #hunt-banner {
+      opacity: 0;
+      transform: translateY(100px) scale(0.88) rotateX(8deg);
+      filter: blur(6px);
+      transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1), filter 0.9s ease;
+    }
+    #hunt-banner.hunt-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1) rotateX(0deg);
+      filter: blur(0px);
+    }
     @keyframes dotFloat {
       0%,100%{transform:translateY(0);opacity:0.6;}
       50%{transform:translateY(-12px);opacity:1;}
@@ -588,6 +599,20 @@
 
       const animatedElements = document.querySelectorAll('.animate-on-scroll, .slide-left, .slide-right');
       animatedElements.forEach((el) => observer.observe(el));
+
+      const huntBanner = document.getElementById('hunt-banner');
+      if (huntBanner) {
+        const huntObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              huntBanner.classList.add('hunt-visible');
+            } else {
+              huntBanner.classList.remove('hunt-visible');
+            }
+          });
+        }, { threshold: 0.15 });
+        huntObserver.observe(huntBanner);
+      }
     });
   </script>
 </body>
