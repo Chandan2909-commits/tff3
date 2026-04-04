@@ -388,7 +388,7 @@ button {
   text-transform: uppercase;
   padding: 16px 36px;
   background: rgb(50, 49, 196);
-  color: #000;
+  color: #fff;
   border-radius: 4px;
   position: relative;
   overflow: hidden;
@@ -785,7 +785,7 @@ button {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   background: rgb(50, 49, 196);
-  color: #000;
+  color: #fff;
   padding: 6px 18px;
   border-radius: 0 var(--radius) 0 var(--radius);
 }
@@ -877,7 +877,7 @@ button {
 
 .btn-plan:hover {
   background: var(--neon-blue);
-  color: #000;
+  color: #fff;
   box-shadow: 0 0 20px var(--neon-glow);
 }
 
@@ -1073,7 +1073,7 @@ button {
   text-transform: uppercase;
   padding: 18px 40px;
   background: rgb(50, 49, 196);
-  color: #000;
+  color: #fff;
   border-radius: 6px;
   transition: box-shadow var(--transition), transform var(--transition);
   align-self: flex-start;
