@@ -254,7 +254,137 @@
         </div>
       </div>
       <div class="why-right" data-reveal-right>
-        <img src="3dchart.png" alt="3D Chart" class="deco-chart-side" />
+        <div class="animated-chart-container" style="position: relative; width: 100%; max-width: 550px; margin: 0 auto; margin-left: 20px;">
+          <style>
+            .chart-line {
+              fill: none;
+              stroke: url(#chartGlow);
+              stroke-width: 4;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              stroke-dasharray: 1000;
+              stroke-dashoffset: 1000;
+              animation: drawChart 3.5s ease-in-out infinite alternate;
+              filter: drop-shadow(0 0 10px rgba(85, 113, 237, 0.6));
+            }
+            .chart-area {
+              fill: url(#chartArea);
+              opacity: 0;
+              animation: fadeArea 3.5s ease-in-out infinite alternate;
+            }
+            .chart-point {
+              fill: #ffffff;
+              stroke: #5571ed;
+              stroke-width: 3;
+              opacity: 0;
+              animation: popPoint 3.5s ease-in-out infinite alternate;
+            }
+            .chart-axis {
+              stroke: rgba(255, 255, 255, 0.4);
+              stroke-width: 2;
+              stroke-linecap: round;
+              stroke-dasharray: 600;
+              stroke-dashoffset: 600;
+              animation: drawAxis 2.5s ease-out forwards;
+            }
+            @keyframes drawAxis {
+              0% { stroke-dashoffset: 600; }
+              100% { stroke-dashoffset: 0; }
+            }
+            @keyframes drawChart {
+              0%, 15% { stroke-dashoffset: 1000; }
+              90%, 100% { stroke-dashoffset: 0; }
+            }
+            @keyframes fadeArea {
+              0%, 40% { opacity: 0; }
+              90%, 100% { opacity: 1; }
+            }
+            @keyframes popPoint {
+              0%, 85% { opacity: 0; transform: scale(0.5); }
+              95%, 100% { opacity: 1; transform: scale(1); }
+            }
+            .grid-line {
+              stroke: rgba(255, 255, 255, 0.05);
+              stroke-width: 1;
+              stroke-dasharray: 4 4;
+            }
+            .grid-text {
+              fill: rgba(255, 255, 255, 0.5);
+              font-family: 'Inter', sans-serif;
+              font-size: 13px;
+              opacity: 0;
+              animation: fadeInText 1.5s ease-in-out forwards;
+              animation-delay: 1.5s;
+            }
+            @keyframes fadeInText {
+              to { opacity: 1; }
+            }
+          </style>
+          <svg viewBox="0 0 500 350" style="width: 100%; height: auto; display: block; overflow: visible;">
+            <defs>
+              <linearGradient id="chartGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#2a3f9e" />
+                <stop offset="50%" stop-color="#5571ed" />
+                <stop offset="100%" stop-color="#00d4ff" />
+              </linearGradient>
+              <linearGradient id="chartArea" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#5571ed" stop-opacity="0.5" />
+                <stop offset="100%" stop-color="#5571ed" stop-opacity="0.0" />
+              </linearGradient>
+            </defs>
+
+            <!-- Background Grid Lines -->
+            <path d="M 60 280 L 460 280" class="grid-line" />
+            <path d="M 60 220 L 460 220" class="grid-line" />
+            <path d="M 60 160 L 460 160" class="grid-line" />
+            <path d="M 60 100 L 460 100" class="grid-line" />
+            <path d="M 60 40 L 460 40" class="grid-line" />
+            
+            <path d="M 160 40 L 160 280" class="grid-line" />
+            <path d="M 260 40 L 260 280" class="grid-line" />
+            <path d="M 360 40 L 360 280" class="grid-line" />
+
+            <!-- Y Axis Values -->
+            <text x="45" y="44" text-anchor="end" class="grid-text">$100k</text>
+            <text x="45" y="104" text-anchor="end" class="grid-text">$75k</text>
+            <text x="45" y="164" text-anchor="end" class="grid-text">$50k</text>
+            <text x="45" y="224" text-anchor="end" class="grid-text">$25k</text>
+            <text x="45" y="284" text-anchor="end" class="grid-text">$0</text>
+
+            <!-- X Axis Values -->
+            <text x="60" y="310" text-anchor="middle" class="grid-text">Jan</text>
+            <text x="160" y="310" text-anchor="middle" class="grid-text">Feb</text>
+            <text x="260" y="310" text-anchor="middle" class="grid-text">Mar</text>
+            <text x="360" y="310" text-anchor="middle" class="grid-text">Apr</text>
+            <text x="460" y="310" text-anchor="middle" class="grid-text">May</text>
+
+            <!-- Axis Lines (Animated) -->
+            <!-- Y-Axis -->
+            <path d="M 60 280 L 60 20" class="chart-axis" />
+            <!-- X-Axis -->
+            <path d="M 60 280 L 480 280" class="chart-axis" />
+
+            <!-- Chart Area -->
+            <path class="chart-area" d="M 60 280 
+                     L 60 240 
+                     C 140 200, 180 250, 240 160 
+                     C 300 70, 340 140, 400 80 
+                     C 440 30, 450 40, 460 20 
+                     L 460 280 Z" />
+
+            <!-- Chart Line -->
+            <path class="chart-line" d="M 60 240 
+                     C 140 200, 180 250, 240 160 
+                     C 300 70, 340 140, 400 80 
+                     C 440 30, 450 40, 460 20" />
+
+            <!-- Points -->
+            <circle cx="460" cy="20" r="8" class="chart-point" style="transform-origin: 460px 20px;" />
+            <circle cx="400" cy="80" r="5" class="chart-point" style="transform-origin: 400px 80px; animation-delay: -0.2s;" />
+            <circle cx="240" cy="160" r="5" class="chart-point" style="transform-origin: 240px 160px; animation-delay: -0.5s;" />
+
+          </svg>
+        </div>
       </div>
     </div>
   </section>
