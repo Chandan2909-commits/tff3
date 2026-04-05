@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="The Fusion Funded — Trading Rules and Guidelines." />
+  <meta name="description" content="The Fusion Funded — Trading Rules and Guidelines." />
   <title>The Fusion Funded | Trading Rules</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,62 +13,299 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css?v=3" />
   <style>
-    .rules-hero { padding-top: 150px; padding-bottom: 80px; position: relative; z-index: 2; }
-    .rules-hero-container { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
-    .rules-hero-content { flex: 1; }
-    .rules-hero-title { font-family: 'Orbitron', sans-serif; font-size: 3rem; margin-bottom: 20px; color: #fff; }
-    .rules-hero-desc { font-size: 1rem; line-height: 1.6; color: #8bb8cc; margin-bottom: 30px; }
-    .rules-hero-img-wrapper { flex: 1; display: flex; justify-content: center; position: relative; }
-    .rules-hero-img { max-width: 100%; height: auto; border-radius: 20px; animation: float 6s ease-in-out infinite; }
+    .rules-hero {
+      padding-top: 150px;
+      padding-bottom: 80px;
+      position: relative;
+      z-index: 2;
+    }
 
-    .help-section { text-align: center; padding: 60px 0; background: transparent; border: none; margin-bottom: 80px; position: relative; z-index: 2; }
-    .help-title { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; margin-bottom: 40px; color: #fff; }
-    .rules-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: left; padding: 0 40px; }
+    .rules-hero-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .rules-hero-content {
+      flex: 1;
+    }
+
+    .rules-hero-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .rules-hero-desc {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #8bb8cc;
+      margin-bottom: 30px;
+    }
+
+    .rules-hero-img-wrapper {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .rules-hero-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .help-section {
+      text-align: center;
+      padding: 60px 0;
+      background: transparent;
+      border: none;
+      margin-bottom: 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .help-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      color: #fff;
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      text-align: left;
+      padding: 0 40px;
+    }
 
     .rule-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(0,212,255,0.12);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(0, 212, 255, 0.12);
       border-radius: 16px;
       padding: 24px;
       backdrop-filter: blur(20px) saturate(160%);
       -webkit-backdrop-filter: blur(20px) saturate(160%);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
       transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      display: flex; flex-direction: column; gap: 12px; cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      cursor: pointer;
     }
-    .rule-card:hover { transform: translateY(-5px); border-color: rgba(0,212,255,0.3); box-shadow: 0 0 24px rgba(0,212,255,0.1), 0 12px 32px rgba(0,0,0,0.4); }
+
+    .rule-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 212, 255, 0.3);
+      box-shadow: 0 0 24px rgba(0, 212, 255, 0.1), 0 12px 32px rgba(0, 0, 0, 0.4);
+    }
 
     .rule-icon {
-      width: 40px; height: 40px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(0,212,255,0.2);
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(0, 212, 255, 0.2);
       border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      color: #00d4ff; margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00d4ff;
+      margin-bottom: 8px;
       backdrop-filter: blur(8px);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
     }
-    .rule-icon svg { width: 24px; height: 24px; }
-    .rule-card h3 { font-family: 'Rajdhani', sans-serif; font-size: 1.3rem; font-weight: 600; color: #fff; margin: 0; }
-    .rule-card p { font-size: 0.9rem; color: #8bb8cc; margin: 0; flex-grow: 1; }
-    .rule-footer { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 0.85rem; color: #8bb8cc; }
-    .rule-footer-icon { width: 20px; height: 20px; background: #00d4ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; }
-    .rule-footer-icon svg { width: 12px; height: 12px; }
 
-    @media (max-width: 992px) { .rules-grid { grid-template-columns: repeat(2, 1fr); } .rules-hero-container { flex-direction: column; } }
-    @media (max-width: 768px) { .rules-grid { grid-template-columns: 1fr; padding: 0 20px; } }
+    .rule-icon svg {
+      width: 24px;
+      height: 24px;
+    }
 
-    .search-wrapper { position: relative; margin: 0 auto 40px; width: 100%; max-width: 250px; height: 56px; background: #000; border-radius: 28px; transition: max-width 0.5s cubic-bezier(0.175,0.885,0.32,1.275), box-shadow 0.4s ease, background-color 0.4s ease; z-index: 100; box-shadow: 0 10px 30px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.1); }
-    .search-wrapper:focus-within, .search-wrapper.has-value { max-width: 600px; background: rgba(14,18,30,0.95); box-shadow: 0 10px 40px rgba(0,212,255,0.2), inset 0 0 0 1px #00d4ff; }
-    .search-input { width: 100%; height: 100%; padding: 0 20px 0 54px; background: transparent; border: none; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; color: #fff; outline: none; border-radius: 28px; }
-    .search-input::placeholder { color: rgba(255,255,255,0.5); transition: opacity 0.3s ease; }
-    .search-icon { position: absolute; top: 50%; left: 18px; transform: translateY(-50%); color: #8bb8cc; pointer-events: none; transition: color 0.3s ease; }
-    .search-wrapper:focus-within .search-icon, .search-wrapper.has-value .search-icon { color: #00d4ff; }
-    .search-dropdown { position: absolute; top: calc(100% + 15px); left: 0; width: 100%; background: rgba(10,14,23,0.95); border: 1px solid rgba(0,212,255,0.2); border-radius: 24px; backdrop-filter: blur(15px); max-height: 300px; overflow-y: auto; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.6); padding: 10px 0; }
-    .search-dropdown.active { display: flex; }
-    .search-result-item { padding: 15px 20px; color: #8bb8cc; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); transition: all 0.2s ease; text-decoration: none; display: block; }
-    .search-result-item:last-child { border-bottom: none; }
-    .search-result-item:hover { background: rgba(0,212,255,0.1); color: #fff; }
+    .rule-card h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #fff;
+      margin: 0;
+    }
+
+    .rule-card p {
+      font-size: 0.9rem;
+      color: #8bb8cc;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    .rule-footer {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #8bb8cc;
+    }
+
+    .rule-footer-icon {
+      width: 20px;
+      height: 20px;
+      background: #00d4ff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .rule-footer-icon svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    @media (max-width: 992px) {
+      .rules-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 20px;
+      }
+
+      .rules-hero-container {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .rules-hero {
+        padding-top: 100px;
+        padding-bottom: 40px;
+      }
+
+      .rules-hero-title {
+        font-size: 1.8rem;
+      }
+
+      .rules-hero-img-wrapper {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+      }
+
+      .help-title {
+        font-size: 1.4rem;
+        padding: 0 16px;
+      }
+
+      .rules-grid {
+        grid-template-columns: 1fr;
+        padding: 0 16px;
+      }
+
+      .search-wrapper {
+        max-width: 90%;
+      }
+
+      .search-wrapper:focus-within,
+      .search-wrapper.has-value {
+        max-width: 90%;
+      }
+    }
+
+    .search-wrapper {
+      position: relative;
+      margin: 0 auto 40px;
+      width: 100%;
+      max-width: 250px;
+      height: 56px;
+      background: #000;
+      border-radius: 28px;
+      transition: max-width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, background-color 0.4s ease;
+      z-index: 100;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    .search-wrapper:focus-within,
+    .search-wrapper.has-value {
+      max-width: 600px;
+      background: rgba(14, 18, 30, 0.95);
+      box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2), inset 0 0 0 1px #00d4ff;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 100%;
+      padding: 0 20px 0 54px;
+      background: transparent;
+      border: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+      color: #fff;
+      outline: none;
+      border-radius: 28px;
+    }
+
+    .search-input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+      transition: opacity 0.3s ease;
+    }
+
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      left: 18px;
+      transform: translateY(-50%);
+      color: #8bb8cc;
+      pointer-events: none;
+      transition: color 0.3s ease;
+    }
+
+    .search-wrapper:focus-within .search-icon,
+    .search-wrapper.has-value .search-icon {
+      color: #00d4ff;
+    }
+
+    .search-dropdown {
+      position: absolute;
+      top: calc(100% + 15px);
+      left: 0;
+      width: 100%;
+      background: rgba(10, 14, 23, 0.95);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      border-radius: 24px;
+      backdrop-filter: blur(15px);
+      max-height: 300px;
+      overflow-y: auto;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      padding: 10px 0;
+    }
+
+    .search-dropdown.active {
+      display: flex;
+    }
+
+    .search-result-item {
+      padding: 15px 20px;
+      color: #8bb8cc;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: block;
+    }
+
+    .search-result-item:last-child {
+      border-bottom: none;
+    }
+
+    .search-result-item:hover {
+      background: rgba(0, 212, 255, 0.1);
+      color: #fff;
+    }
   </style>
 </head>
 
@@ -91,7 +327,8 @@
         <li><a href="trading_rules.html" class="nav-link">Trading Rules</a></li>
         <li><a href="affiliate_program.html" class="nav-link">Affiliates</a></li>
         <li><a href="contact_us.html" class="nav-link">Contact Us</a></li>
-        <li><a href="https://user.thefusionfunded.com/user/signup" class="nav-cta-mobile" target="_blank">Login / Sign Up</a></li>
+        <li><a href="https://user.thefusionfunded.com/user/signup" class="nav-cta-mobile" target="_blank">Login / Sign
+            Up</a></li>
       </ul>
       <a href="https://user.thefusionfunded.com/user/signup" class="nav-cta" id="nav-cta" target="_blank">Login / Sign
         Up</a>
@@ -112,14 +349,19 @@
       <div class="rules-hero-content" data-reveal-left>
         <h1 class="rules-hero-title">Trade without <span class="gradient-text">any boundaries</span></h1>
         <p class="rules-hero-desc">
-          At The only prop, trading guidelines are intended to encourage an organized and profitable trading atmosphere. Our guidelines are designed to promote sensible trading practices, such as risk administration and compliance to corporate goals. By matching our regulations with best practices in the marketplace. Top guarantees that traders function in an environment that encourages stability and development.
+          At The Fusion Funded, trading guidelines are intended to encourage an organized and profitable trading
+          atmosphere.
+          Our guidelines are designed to promote sensible trading practices, such as risk administration and compliance
+          to corporate goals. By matching our regulations with best practices in the marketplace. Top guarantees that
+          traders function in an environment that encourages stability and development.
         </p>
-        <a href="contact_us.html"  class="btn-ghost" >
+        <a href="contact_us.html" class="btn-ghost">
           <span>CONTACT US</span>
         </a>
       </div>
       <div class="rules-hero-img-wrapper" data-reveal-right>
-        <img src="trading_robot.png" alt="Trading Robot Market Mascot" class="rules-hero-img" style="filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.4)); transform: scale(1.05);" />
+        <img src="trading_robot.png" alt="Trading Robot Market Mascot" class="rules-hero-img"
+          style="filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.4)); transform: scale(1.05);" />
       </div>
     </div>
   </section>
@@ -128,45 +370,63 @@
   <section class="container">
     <div class="help-section" data-reveal>
       <h2 class="help-title">Hi there, what do you need help with today?</h2>
-      
+
       <div class="search-wrapper">
-        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"
+          height="20">
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
-        <input type="text" class="search-input" id="rules-search" placeholder="Search trading rules, kyc, withdrawals..." autocomplete="off">
+        <input type="text" class="search-input" id="rules-search"
+          placeholder="Search trading rules, kyc, withdrawals..." autocomplete="off">
         <div class="search-dropdown" id="search-dropdown"></div>
       </div>
-      
+
       <div class="rules-grid">
         <!-- Card 1 -->
-        <a href="trading_rules_detail.html?category=about" style="text-decoration: none; color: inherit; display: block;">
+        <a href="trading_rules_detail.html?category=about"
+          style="text-decoration: none; color: inherit; display: block;">
           <div class="rule-card">
             <div class="rule-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
             </div>
             <h3>About The Fusion Funded</h3>
             <p>The Fusion Funded</p>
             <div class="rule-footer">
               <div class="rule-footer-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                </svg>
               </div>
               <span>By The Fusion Funded &middot; 4 Articles</span>
             </div>
           </div>
         </a>
-        
+
         <!-- Card 2 -->
-        <a href="trading_rules_detail.html?category=rules" style="text-decoration: none; color: inherit; display: block;">
+        <a href="trading_rules_detail.html?category=rules"
+          style="text-decoration: none; color: inherit; display: block;">
           <div class="rule-card">
             <div class="rule-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 3v5h5M16 13H8M16 17H8M10 9H8"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+                <path d="M14 3v5h5M16 13H8M16 17H8M10 9H8" />
+              </svg>
             </div>
             <h3>Trading Rules and Guidelines</h3>
             <p>Rules</p>
             <div class="rule-footer">
               <div class="rule-footer-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                </svg>
               </div>
               <span>By The Fusion Funded &middot; 2 Articles</span>
             </div>
@@ -177,13 +437,20 @@
         <a href="trading_rules_detail.html?category=kyc" style="text-decoration: none; color: inherit; display: block;">
           <div class="rule-card">
             <div class="rule-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16v-4" />
+                <path d="M12 8h.01" />
+              </svg>
             </div>
             <h3>KYC (Know Your Customer)</h3>
             <p>KYC</p>
             <div class="rule-footer">
               <div class="rule-footer-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                </svg>
               </div>
               <span>By The Fusion Funded &middot; 4 Articles</span>
             </div>
@@ -191,16 +458,23 @@
         </a>
 
         <!-- Card 4 -->
-        <a href="trading_rules_detail.html?category=withdrawals" style="text-decoration: none; color: inherit; display: block;">
+        <a href="trading_rules_detail.html?category=withdrawals"
+          style="text-decoration: none; color: inherit; display: block;">
           <div class="rule-card">
             <div class="rule-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2" ry="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="5" width="20" height="14" rx="2" ry="2" />
+                <line x1="2" y1="10" x2="22" y2="10" />
+              </svg>
             </div>
             <h3>Withdrawals</h3>
             <p>Withdrawals</p>
             <div class="rule-footer">
               <div class="rule-footer-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                </svg>
               </div>
               <span>By The Fusion Funded &middot; 4 Articles</span>
             </div>
@@ -208,16 +482,23 @@
         </a>
 
         <!-- Card 5 -->
-        <a href="trading_rules_detail.html?category=weekend" style="text-decoration: none; color: inherit; display: block;">
+        <a href="trading_rules_detail.html?category=weekend"
+          style="text-decoration: none; color: inherit; display: block;">
           <div class="rule-card">
             <div class="rule-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
             </div>
             <h3>Weekend Trading</h3>
             <p>Weekend</p>
             <div class="rule-footer">
               <div class="rule-footer-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                </svg>
               </div>
               <span>By The Fusion Funded &middot; 1 Articles</span>
             </div>
@@ -225,16 +506,23 @@
         </a>
 
         <!-- Card 6 -->
-        <a href="trading_rules_detail.html?category=security" style="text-decoration: none; color: inherit; display: block;">
+        <a href="trading_rules_detail.html?category=security"
+          style="text-decoration: none; color: inherit; display: block;">
           <div class="rule-card">
             <div class="rule-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
             </div>
             <h3>Account Security &amp; Access Rules</h3>
             <p>Some important Rules</p>
             <div class="rule-footer">
               <div class="rule-footer-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                </svg>
               </div>
               <span>By The Fusion Funded &middot; 2 Articles</span>
             </div>
@@ -242,16 +530,22 @@
         </a>
 
         <!-- Card 7 -->
-        <a href="trading_rules_detail.html?category=refund" style="text-decoration: none; color: inherit; display: block;">
+        <a href="trading_rules_detail.html?category=refund"
+          style="text-decoration: none; color: inherit; display: block;">
           <div class="rule-card">
             <div class="rule-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
             </div>
             <h3>Refund Policies</h3>
             <p>Refund</p>
             <div class="rule-footer">
               <div class="rule-footer-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                </svg>
               </div>
               <span>By The Fusion Funded &middot; 1 Articles</span>
             </div>
@@ -275,13 +569,22 @@
           <div class="social-links">
             <a href="https://www.instagram.com/thefusionfunded/" class="social-link" aria-label="Instagram"
               target="_blank">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
             </a>
             <a href="https://t.me/thefusionfunded" class="social-link" aria-label="Telegram" target="_blank">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+              </svg>
             </a>
             <a href="https://wa.me/message/M3FHBYUPELBIJ1" class="social-link" aria-label="WhatsApp" target="_blank">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
             </a>
           </div>
         </div>
@@ -301,7 +604,7 @@
           <ul>
             <li><a href="mailto:info@thefusionfunded.com">info@thefusionfunded.com</a></li>
             <li><a href="tel:+447861395161">+44 7861 395161</a></li>
-            <li>Grigori Afxentiou, Ayia Napa, Cyprus</li>
+            <li>3rd Floor, The Binary Tower, Marasi Dr - Business Bay, Dubai, UAE</li>
           </ul>
         </div>
       </div>
@@ -357,7 +660,7 @@
 
     const searchDropdown = document.getElementById('search-dropdown');
     const searchInput = document.getElementById('rules-search');
-    
+
     if (searchInput && searchDropdown) {
       searchInput.addEventListener('input', (e) => {
         const val = e.target.value.toLowerCase().trim();
@@ -367,15 +670,15 @@
           searchInput.parentElement.classList.remove('has-value');
           return;
         }
-        
+
         searchInput.parentElement.classList.add('has-value');
 
-        const filtered = searchData.filter(item => 
-          item.question.toLowerCase().includes(val) || 
-          item.content.toLowerCase().includes(val) || 
+        const filtered = searchData.filter(item =>
+          item.question.toLowerCase().includes(val) ||
+          item.content.toLowerCase().includes(val) ||
           (item.category && item.category.toLowerCase().includes(val))
         );
-        
+
         const catMap = {
           'about': 'About The Fusion Funded',
           'rules': 'Trading Rules and Guidelines',
@@ -392,7 +695,7 @@
             const a = document.createElement('a');
             a.href = `trading_rules_detail.html?category=${item.category}&q=${encodeURIComponent(item.question)}`;
             a.className = 'search-result-item';
-            
+
             let catName = catMap[item.category] || item.category;
             let titleHtml = item.question;
             let contentHtml = item.content;
@@ -404,13 +707,13 @@
             } else if (contentHtml.length > 100) {
               contentHtml = contentHtml.substring(0, 100) + '...';
             }
-            
+
             // Highlight match
             const regex = new RegExp(`(${val})`, 'gi');
             titleHtml = titleHtml.replace(regex, `<span style="color: #00d4ff;">$1</span>`);
             contentHtml = contentHtml.replace(regex, `<span style="color: #00d4ff;">$1</span>`);
             catName = catName.replace(regex, `<span style="color: #00d4ff;">$1</span>`);
-            
+
             a.innerHTML = `
               <div style="font-size: 0.75rem; color: #00d4ff; text-transform: uppercase; margin-bottom: 4px; letter-spacing: 0.5px; font-weight: 600;">${catName}</div>
               <div style="font-weight: 600; color: #fff; margin-bottom: 5px; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem;">${titleHtml}</div>
@@ -438,4 +741,5 @@
     }
   </script>
 </body>
+
 </html>

@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="The Fusion Funded â€” Where innovation, expertise, and partnership are the cornerstones of success. Get funded and trade forex, crypto, indices with up to $200K capital." />
+    content="The Fusion Funded - Where innovation, expertise, and partnership are the cornerstones of success. Get funded and trade forex, crypto, indices with up to $200K capital." />
   <title>The Fusion Funded | Prop Trading Firm</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,27 +14,134 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css?v=3" />
   <style>
+    #page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      transition: opacity 0.7s ease, visibility 0.7s ease;
+    }
+
+    #page-loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-wrap {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .loader-ring {
+      position: absolute;
+      inset: 0;
+      animation: loaderSpin 1.2s linear infinite;
+    }
+
+    .loader-ring circle {
+      fill: none;
+      stroke: url(#loaderGrad);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 260;
+      stroke-dashoffset: 190;
+    }
+
+    .loader-logo {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      animation: loaderPulse 1.8s ease-in-out infinite;
+    }
+
+    .loader-text {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: rgba(255, 255, 255, 0.35);
+      text-transform: uppercase;
+      animation: loaderPulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes loaderSpin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes loaderPulse {
+
+      0%,
+      100% {
+        opacity: 0.5;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
     [data-reveal-left] {
       opacity: 0;
       transform: translateX(-80px) scale(0.95);
       filter: blur(4px);
-      transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1), filter 0.75s ease;
+      transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1), filter 0.75s ease;
     }
+
     [data-reveal-left].revealed {
       opacity: 1;
       transform: translateX(0) scale(1);
       filter: blur(0);
     }
-    [data-reveal-left]:nth-child(2) { transition-delay: 0.12s; }
-    [data-reveal-left]:nth-child(3) { transition-delay: 0.24s; }
+
+    [data-reveal-left]:nth-child(2) {
+      transition-delay: 0.12s;
+    }
+
+    [data-reveal-left]:nth-child(3) {
+      transition-delay: 0.24s;
+    }
+
     @media (max-width: 768px) {
-      #how-to-use video { opacity: 0.08 !important; }
-      #how-to-use-overlay { background: rgba(0,0,0,0.75) !important; }
+      #how-to-use video {
+        opacity: 0.08 !important;
+      }
+
+      #how-to-use-overlay {
+        background: rgba(0, 0, 0, 0.75) !important;
+      }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- ===== PAGE LOADER ===== -->
+  <div id="page-loader">
+    <div class="loader-wrap">
+      <svg class="loader-ring" viewBox="0 0 100 100">
+        <defs>
+          <linearGradient id="loaderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00d4ff" />
+            <stop offset="100%" stop-color="rgb(50,49,196)" />
+          </linearGradient>
+        </defs>
+        <circle cx="50" cy="50" r="44" />
+      </svg>
+      <img src="logo.png" alt="Logo" class="loader-logo">
+    </div>
+    <span class="loader-text">Loading...</span>
+  </div>
 
   <!-- ===== GLOBAL LIQUID GRADIENT BG ===== -->
   <canvas id="liquid-bg"></canvas>
@@ -52,7 +159,8 @@
         <li><a href="trading_rules.html" class="nav-link">Trading Rules</a></li>
         <li><a href="affiliate_program.html" class="nav-link">Affiliates</a></li>
         <li><a href="contact_us.html" class="nav-link">Contact Us</a></li>
-        <li><a href="https://user.thefusionfunded.com/user/signup" class="nav-cta-mobile" target="_blank">Login / Sign Up</a></li>
+        <li><a href="https://user.thefusionfunded.com/user/signup" class="nav-cta-mobile" target="_blank">Login / Sign
+            Up</a></li>
       </ul>
       <a href="https://user.thefusionfunded.com/user/signup" class="nav-cta" id="nav-cta" target="_blank">Login / Sign
         Up</a>
@@ -81,25 +189,35 @@
         <div class="hero-feature-cards">
           <div class="hero-feat-card">
             <div class="hero-feat-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
             </div>
             <span>Zero Reward Denials</span>
           </div>
           <div class="hero-feat-card">
             <div class="hero-feat-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+              </svg>
             </div>
             <span>Flexible Reward Cycles</span>
           </div>
           <div class="hero-feat-card">
             <div class="hero-feat-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
             </div>
             <span>We Grow Together</span>
           </div>
           <div class="hero-feat-card">
             <div class="hero-feat-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16m-7 6h7"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M4 6h16M4 12h16m-7 6h7" />
+              </svg>
             </div>
             <span>Choice Is Yours</span>
           </div>
@@ -160,26 +278,33 @@
   </div>
 
   <!-- ===== HOW TO USE THIS SITE ===== -->
-  <section id="how-to-use" class="section how-to-use-section" style="position:relative;overflow:hidden;background:#000;">
-    <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:0;opacity:1;"><source src="mobile_vid.mp4" type="video/mp4"></video>
+  <section id="how-to-use" class="section how-to-use-section"
+    style="position:relative;overflow:hidden;background:#000;">
+    <video autoplay muted loop playsinline
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:0;opacity:1;">
+      <source src="mobile_vid.mp4" type="video/mp4">
+    </video>
     <div id="how-to-use-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.15);z-index:1;"></div>
-    <div style="position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,transparent,#000);z-index:2;pointer-events:none;"></div>
+    <div
+      style="position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,transparent,#000);z-index:2;pointer-events:none;">
+    </div>
     <div class="container" style="position:relative;z-index:2;text-align:left;">
       <div class="how-to-use-left" style="max-width:600px;">
         <span class="section-tag">Getting Started</span>
         <h2 class="section-title" data-reveal>How To Use <span class="gradient-text">This Site</span></h2>
-        <p class="how-to-use-desc" data-reveal>Getting started with The Fusion Funded is simple. Follow these steps to begin your funded trading journey and unlock access to up to $200K in simulated capital.</p>
+        <p class="how-to-use-desc" data-reveal>Getting started with The Fusion Funded is simple. Follow these steps to
+          begin your funded trading journey and unlock access to up to $200K in simulated capital.</p>
         <div class="how-to-use-steps">
           <div class="htu-step" data-reveal-left>
             <div>
               <h4>Create Your Account</h4>
-              <p>Sign up on our platform in minutes. No complex paperwork â€” just your details and you're in.</p>
+              <p>Sign up on our platform in minutes. No complex paperwork - just your details and you're in.</p>
             </div>
           </div>
           <div class="htu-step" data-reveal-left>
             <div>
               <h4>Choose a Challenge</h4>
-              <p>Pick a plan that suits your trading style â€” Step 1, Step 2, HFT, or HFT 2.0.</p>
+              <p>Pick a plan that suits your trading style - HFT 2.0.</p>
             </div>
           </div>
           <div class="htu-step" data-reveal-left>
@@ -188,208 +313,6 @@
               <p>Hit your profit targets, pass the challenge, and receive your funded account with fast payouts.</p>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== KEY HIGHLIGHTS ===== -->
-  <section id="highlights" class="section highlights-section">
-    <div class="container">
-      <div class="section-header" data-reveal>
-        <span class="section-tag">Key Highlights</span>
-        <h2 class="section-title">More Than Just a <span class="gradient-text">Prop Firm</span></h2>
-        <p class="section-desc">The Fusion Funded â€” we are your partner in forex trading success. By providing funded
-          accounts and expert support, we help you overcome financial barriers and reach your trading potential.</p>
-      </div>
-      <div class="highlights-grid">
-        <div class="about-card" data-reveal>
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            </svg></div>
-          <h3>Safe And Secure</h3>
-          <p>Experience Ultra-Fast and Secure Trade Execution with Raw Spreads and No Commissions.</p>
-        </div>
-        <div class="about-card" data-reveal>
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-            </svg></div>
-          <h3>Fast Payouts</h3>
-          <p>Payouts are given on a monthly basis and processing time is 24 hours. Making your journey smooth and
-            successful.</p>
-        </div>
-        <div class="about-card" data-reveal>
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
-              <line x1="4" y1="22" x2="4" y2="15" />
-            </svg></div>
-          <h3>News Trading</h3>
-          <p>Take advantage of high-impact news with The Fusion Funded, allowing you to capitalize on significant market
-            movements.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== WHY TRADE WITH US ===== -->
-  <section id="why-us" class="section why-section">
-    <div class="container why-container">
-      <div class="why-left">
-        <div class="section-header" data-reveal style="text-align: left; margin-inline: 0;">
-          <h2 class="section-title">Your Edge, <span class="gradient-text">Our Platform</span></h2>
-        </div>
-        <div class="why-grid">
-          <div class="why-card" data-reveal-left>
-            <h3>Best Trading Platforms</h3>
-            <p>Trade on MT5 Platform. The Fusion Funded traders can choose MetaTrader 5, Tradeshub, Match Trader, DXTrade, and CTrader.</p>
-          </div>
-          <div class="why-card" data-reveal-left>
-            <h3>Guaranteed Payouts</h3>
-            <p>Receive your payment within 24 hours. No reward denials â€” ever. Your profits, your money.</p>
-          </div>
-          <div class="why-card" data-reveal-left>
-            <h3>24/7 Support</h3>
-            <p>Enjoy professional support with an average response time of just 50 seconds. We are here round the clock.</p>
-          </div>
-        </div>
-        <div class="why-cta-row" style="text-align: left; margin-top: 30px;">
-          <a href="https://t.me/thefusionfunded" class="btn-primary" target="_blank" style="margin: 0;">
-            <span>Join Telegram Community</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="why-right" data-reveal-right>
-        <div class="animated-chart-container" style="position: relative; width: 100%; max-width: 550px; margin: 0 auto; margin-left: 20px;">
-          <style>
-            .chart-line {
-              fill: none;
-              stroke: url(#chartGlow);
-              stroke-width: 4;
-              stroke-linecap: round;
-              stroke-linejoin: round;
-              stroke-dasharray: 1000;
-              stroke-dashoffset: 1000;
-              animation: drawChart 3.5s ease-in-out infinite alternate;
-              filter: drop-shadow(0 0 10px rgba(85, 113, 237, 0.6));
-            }
-            .chart-area {
-              fill: url(#chartArea);
-              opacity: 0;
-              animation: fadeArea 3.5s ease-in-out infinite alternate;
-            }
-            .chart-point {
-              fill: #ffffff;
-              stroke: #5571ed;
-              stroke-width: 3;
-              opacity: 0;
-              animation: popPoint 3.5s ease-in-out infinite alternate;
-            }
-            .chart-axis {
-              stroke: rgba(255, 255, 255, 0.4);
-              stroke-width: 2;
-              stroke-linecap: round;
-              stroke-dasharray: 600;
-              stroke-dashoffset: 600;
-              animation: drawAxis 2.5s ease-out forwards;
-            }
-            @keyframes drawAxis {
-              0% { stroke-dashoffset: 600; }
-              100% { stroke-dashoffset: 0; }
-            }
-            @keyframes drawChart {
-              0%, 15% { stroke-dashoffset: 1000; }
-              90%, 100% { stroke-dashoffset: 0; }
-            }
-            @keyframes fadeArea {
-              0%, 40% { opacity: 0; }
-              90%, 100% { opacity: 1; }
-            }
-            @keyframes popPoint {
-              0%, 85% { opacity: 0; transform: scale(0.5); }
-              95%, 100% { opacity: 1; transform: scale(1); }
-            }
-            .grid-line {
-              stroke: rgba(255, 255, 255, 0.05);
-              stroke-width: 1;
-              stroke-dasharray: 4 4;
-            }
-            .grid-text {
-              fill: rgba(255, 255, 255, 0.5);
-              font-family: 'Inter', sans-serif;
-              font-size: 13px;
-              opacity: 0;
-              animation: fadeInText 1.5s ease-in-out forwards;
-              animation-delay: 1.5s;
-            }
-            @keyframes fadeInText {
-              to { opacity: 1; }
-            }
-          </style>
-          <svg viewBox="0 0 500 350" style="width: 100%; height: auto; display: block; overflow: visible;">
-            <defs>
-              <linearGradient id="chartGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#2a3f9e" />
-                <stop offset="50%" stop-color="#5571ed" />
-                <stop offset="100%" stop-color="#00d4ff" />
-              </linearGradient>
-              <linearGradient id="chartArea" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#5571ed" stop-opacity="0.5" />
-                <stop offset="100%" stop-color="#5571ed" stop-opacity="0.0" />
-              </linearGradient>
-            </defs>
-
-            <!-- Background Grid Lines -->
-            <path d="M 60 280 L 460 280" class="grid-line" />
-            <path d="M 60 220 L 460 220" class="grid-line" />
-            <path d="M 60 160 L 460 160" class="grid-line" />
-            <path d="M 60 100 L 460 100" class="grid-line" />
-            <path d="M 60 40 L 460 40" class="grid-line" />
-            
-            <path d="M 160 40 L 160 280" class="grid-line" />
-            <path d="M 260 40 L 260 280" class="grid-line" />
-            <path d="M 360 40 L 360 280" class="grid-line" />
-
-            <!-- Y Axis Values -->
-            <text x="45" y="44" text-anchor="end" class="grid-text">$100k</text>
-            <text x="45" y="104" text-anchor="end" class="grid-text">$75k</text>
-            <text x="45" y="164" text-anchor="end" class="grid-text">$50k</text>
-            <text x="45" y="224" text-anchor="end" class="grid-text">$25k</text>
-            <text x="45" y="284" text-anchor="end" class="grid-text">$0</text>
-
-            <!-- X Axis Values -->
-            <text x="60" y="310" text-anchor="middle" class="grid-text">Jan</text>
-            <text x="160" y="310" text-anchor="middle" class="grid-text">Feb</text>
-            <text x="260" y="310" text-anchor="middle" class="grid-text">Mar</text>
-            <text x="360" y="310" text-anchor="middle" class="grid-text">Apr</text>
-            <text x="460" y="310" text-anchor="middle" class="grid-text">May</text>
-
-            <!-- Axis Lines (Animated) -->
-            <!-- Y-Axis -->
-            <path d="M 60 280 L 60 20" class="chart-axis" />
-            <!-- X-Axis -->
-            <path d="M 60 280 L 480 280" class="chart-axis" />
-
-            <!-- Chart Area -->
-            <path class="chart-area" d="M 60 280 
-                     L 60 240 
-                     C 140 200, 180 250, 240 160 
-                     C 300 70, 340 140, 400 80 
-                     C 440 30, 450 40, 460 20 
-                     L 460 280 Z" />
-
-            <!-- Chart Line -->
-            <path class="chart-line" d="M 60 240 
-                     C 140 200, 180 250, 240 160 
-                     C 300 70, 340 140, 400 80 
-                     C 440 30, 450 40, 460 20" />
-
-            <!-- Points -->
-            <circle cx="460" cy="20" r="8" class="chart-point" style="transform-origin: 460px 20px;" />
-            <circle cx="400" cy="80" r="5" class="chart-point" style="transform-origin: 400px 80px; animation-delay: -0.2s;" />
-            <circle cx="240" cy="160" r="5" class="chart-point" style="transform-origin: 240px 160px; animation-delay: -0.5s;" />
-
-          </svg>
         </div>
       </div>
     </div>
@@ -475,16 +398,33 @@
           </div>
           <div class="pgt-row pgt-row-last">
             <div class="pgt-cell pgt-label">NEWS TRADING</div>
-            <div class="pgt-cell"><span class="pgt-badge-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
-            <div class="pgt-cell"><span class="pgt-badge-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
-            <div class="pgt-cell"><span class="pgt-badge-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
-            <div class="pgt-cell"><span class="pgt-badge-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
-            <div class="pgt-cell"><span class="pgt-badge-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
-            <div class="pgt-cell"><span class="pgt-badge-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
+            <div class="pgt-cell"><span class="pgt-badge-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor"
+                  stroke-width="2.5">
+                  <path d="M2 7l4 4 6-6" />
+                </svg></span></div>
+            <div class="pgt-cell"><span class="pgt-badge-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor"
+                  stroke-width="2.5">
+                  <path d="M2 7l4 4 6-6" />
+                </svg></span></div>
+            <div class="pgt-cell"><span class="pgt-badge-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor"
+                  stroke-width="2.5">
+                  <path d="M2 7l4 4 6-6" />
+                </svg></span></div>
+            <div class="pgt-cell"><span class="pgt-badge-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor"
+                  stroke-width="2.5">
+                  <path d="M2 7l4 4 6-6" />
+                </svg></span></div>
+            <div class="pgt-cell"><span class="pgt-badge-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor"
+                  stroke-width="2.5">
+                  <path d="M2 7l4 4 6-6" />
+                </svg></span></div>
+            <div class="pgt-cell"><span class="pgt-badge-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor"
+                  stroke-width="2.5">
+                  <path d="M2 7l4 4 6-6" />
+                </svg></span></div>
           </div>
         </div>
       </div>
-
       <div class="plans-cta-row">
         <a href="https://user.thefusionfunded.com/user/signup" class="btn-primary" target="_blank">
           <span>Start Challenge</span>
@@ -496,6 +436,256 @@
     </div>
   </section>
 
+  <!-- ===== KEY HIGHLIGHTS ===== -->
+  <section id="highlights" class="section highlights-section">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-tag">Key Highlights</span>
+        <h2 class="section-title">More Than Just a <span class="gradient-text">Prop Firm</span></h2>
+        <p class="section-desc">The Fusion Funded - we are your partner in forex trading success. By providing funded
+          accounts and expert support, we help you overcome financial barriers and reach your trading potential.</p>
+      </div>
+      <div class="highlights-grid">
+        <div class="about-card" data-reveal>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg></div>
+          <h3>Safe And Secure</h3>
+          <p>Experience Ultra-Fast and Secure Trade Execution with Raw Spreads and No Commissions.</p>
+        </div>
+        <div class="about-card" data-reveal>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg></div>
+          <h3>Fast Payouts</h3>
+          <p>Payouts are given on a monthly basis and processing time is 24 hours. Making your journey smooth and
+            successful.</p>
+        </div>
+        <div class="about-card" data-reveal>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+              <line x1="4" y1="22" x2="4" y2="15" />
+            </svg></div>
+          <h3>News Trading</h3>
+          <p>Take advantage of high-impact news with The Fusion Funded, allowing you to capitalize on significant market
+            movements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY TRADE WITH US ===== -->
+  <section id="why-us" class="section why-section">
+    <div class="container why-container">
+      <div class="why-left">
+        <div class="section-header" data-reveal style="text-align: left; margin-inline: 0;">
+          <h2 class="section-title">Your Edge, <span class="gradient-text">Our Platform</span></h2>
+        </div>
+        <div class="why-grid">
+          <div class="why-card" data-reveal-left>
+            <h3>Best Trading Platforms</h3>
+            <p>Trade on MT5 Platform. The Fusion Funded traders can choose MetaTrader 5.</p>
+          </div>
+          <div class="why-card" data-reveal-left>
+            <h3>Guaranteed Payouts</h3>
+            <p>Receive your payment within 24 hours. No reward denials - ever. Your profits, your money.</p>
+          </div>
+          <div class="why-card" data-reveal-left>
+            <h3>24/7 Support</h3>
+            <p>Enjoy professional support with an average response time of just 50 seconds. We are here round the clock.
+            </p>
+          </div>
+        </div>
+        <div class="why-cta-row" style="text-align: left; margin-top: 30px;">
+          <a href="https://t.me/thefusionfunded" class="btn-primary" target="_blank" style="margin: 0;">
+            <span>Join Telegram Community</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="why-right" data-reveal-right>
+        <div class="animated-chart-container"
+          style="position: relative; width: 100%; max-width: 550px; margin: 0 auto; margin-left: 20px;">
+          <style>
+            .chart-line {
+              fill: none;
+              stroke: url(#chartGlow);
+              stroke-width: 4;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              stroke-dasharray: 1000;
+              stroke-dashoffset: 1000;
+              animation: drawChart 3.5s ease-in-out infinite alternate;
+              filter: drop-shadow(0 0 10px rgba(85, 113, 237, 0.6));
+            }
+
+            .chart-area {
+              fill: url(#chartArea);
+              opacity: 0;
+              animation: fadeArea 3.5s ease-in-out infinite alternate;
+            }
+
+            .chart-point {
+              fill: #ffffff;
+              stroke: #5571ed;
+              stroke-width: 3;
+              opacity: 0;
+              animation: popPoint 3.5s ease-in-out infinite alternate;
+            }
+
+            .chart-axis {
+              stroke: rgba(255, 255, 255, 0.4);
+              stroke-width: 2;
+              stroke-linecap: round;
+              stroke-dasharray: 600;
+              stroke-dashoffset: 600;
+              animation: drawAxis 2.5s ease-out forwards;
+            }
+
+            @keyframes drawAxis {
+              0% {
+                stroke-dashoffset: 600;
+              }
+
+              100% {
+                stroke-dashoffset: 0;
+              }
+            }
+
+            @keyframes drawChart {
+
+              0%,
+              15% {
+                stroke-dashoffset: 1000;
+              }
+
+              90%,
+              100% {
+                stroke-dashoffset: 0;
+              }
+            }
+
+            @keyframes fadeArea {
+
+              0%,
+              40% {
+                opacity: 0;
+              }
+
+              90%,
+              100% {
+                opacity: 1;
+              }
+            }
+
+            @keyframes popPoint {
+
+              0%,
+              85% {
+                opacity: 0;
+                transform: scale(0.5);
+              }
+
+              95%,
+              100% {
+                opacity: 1;
+                transform: scale(1);
+              }
+            }
+
+            .grid-line {
+              stroke: rgba(255, 255, 255, 0.05);
+              stroke-width: 1;
+              stroke-dasharray: 4 4;
+            }
+
+            .grid-text {
+              fill: rgba(255, 255, 255, 0.5);
+              font-family: 'Inter', sans-serif;
+              font-size: 13px;
+              opacity: 0;
+              animation: fadeInText 1.5s ease-in-out forwards;
+              animation-delay: 1.5s;
+            }
+
+            @keyframes fadeInText {
+              to {
+                opacity: 1;
+              }
+            }
+          </style>
+          <svg viewBox="0 0 500 350" style="width: 100%; height: auto; display: block; overflow: visible;">
+            <defs>
+              <linearGradient id="chartGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#2a3f9e" />
+                <stop offset="50%" stop-color="#5571ed" />
+                <stop offset="100%" stop-color="#00d4ff" />
+              </linearGradient>
+              <linearGradient id="chartArea" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#5571ed" stop-opacity="0.5" />
+                <stop offset="100%" stop-color="#5571ed" stop-opacity="0.0" />
+              </linearGradient>
+            </defs>
+
+            <!-- Background Grid Lines -->
+            <path d="M 60 280 L 460 280" class="grid-line" />
+            <path d="M 60 220 L 460 220" class="grid-line" />
+            <path d="M 60 160 L 460 160" class="grid-line" />
+            <path d="M 60 100 L 460 100" class="grid-line" />
+            <path d="M 60 40 L 460 40" class="grid-line" />
+
+            <path d="M 160 40 L 160 280" class="grid-line" />
+            <path d="M 260 40 L 260 280" class="grid-line" />
+            <path d="M 360 40 L 360 280" class="grid-line" />
+
+            <!-- Y Axis Values -->
+            <text x="45" y="44" text-anchor="end" class="grid-text">$100k</text>
+            <text x="45" y="104" text-anchor="end" class="grid-text">$75k</text>
+            <text x="45" y="164" text-anchor="end" class="grid-text">$50k</text>
+            <text x="45" y="224" text-anchor="end" class="grid-text">$25k</text>
+            <text x="45" y="284" text-anchor="end" class="grid-text">$0</text>
+
+            <!-- X Axis Values -->
+            <text x="60" y="310" text-anchor="middle" class="grid-text">Jan</text>
+            <text x="160" y="310" text-anchor="middle" class="grid-text">Feb</text>
+            <text x="260" y="310" text-anchor="middle" class="grid-text">Mar</text>
+            <text x="360" y="310" text-anchor="middle" class="grid-text">Apr</text>
+            <text x="460" y="310" text-anchor="middle" class="grid-text">May</text>
+
+            <!-- Axis Lines (Animated) -->
+            <!-- Y-Axis -->
+            <path d="M 60 280 L 60 20" class="chart-axis" />
+            <!-- X-Axis -->
+            <path d="M 60 280 L 480 280" class="chart-axis" />
+
+            <!-- Chart Area -->
+            <path class="chart-area" d="M 60 280 
+                     L 60 240 
+                     C 140 200, 180 250, 240 160 
+                     C 300 70, 340 140, 400 80 
+                     C 440 30, 450 40, 460 20 
+                     L 460 280 Z" />
+
+            <!-- Chart Line -->
+            <path class="chart-line" d="M 60 240 
+                     C 140 200, 180 250, 240 160 
+                     C 300 70, 340 140, 400 80 
+                     C 440 30, 450 40, 460 20" />
+
+            <!-- Points -->
+            <circle cx="460" cy="20" r="8" class="chart-point" style="transform-origin: 460px 20px;" />
+            <circle cx="400" cy="80" r="5" class="chart-point"
+              style="transform-origin: 400px 80px; animation-delay: -0.2s;" />
+            <circle cx="240" cy="160" r="5" class="chart-point"
+              style="transform-origin: 240px 160px; animation-delay: -0.5s;" />
+
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ===== PARALLAX DIVIDER ===== -->
   <div class="parallax-divider">
@@ -527,9 +717,21 @@
             </div>
             <div class="cg-col-others">
               <div class="cg-others-bubbles">
-                <span class="cg-bubble"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="7" height="14"/><rect x="10" y="3" width="11" height="18"/><path d="M3 21h18"/></svg></span>
-                <span class="cg-bubble"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="7" height="14"/><rect x="10" y="3" width="11" height="18"/><path d="M3 21h18"/></svg></span>
-                <span class="cg-bubble"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="7" height="14"/><rect x="10" y="3" width="11" height="18"/><path d="M3 21h18"/></svg></span>
+                <span class="cg-bubble"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="3" y="7" width="7" height="14" />
+                    <rect x="10" y="3" width="11" height="18" />
+                    <path d="M3 21h18" />
+                  </svg></span>
+                <span class="cg-bubble"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="3" y="7" width="7" height="14" />
+                    <rect x="10" y="3" width="11" height="18" />
+                    <path d="M3 21h18" />
+                  </svg></span>
+                <span class="cg-bubble"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="3" y="7" width="7" height="14" />
+                    <rect x="10" y="3" width="11" height="18" />
+                    <path d="M3 21h18" />
+                  </svg></span>
               </div>
               <span class="cg-col-title cg-others-title">Others</span>
             </div>
@@ -537,41 +739,198 @@
 
           <!-- Rows -->
           <div class="cg-row">
-            <div class="cg-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M9 15l3-3 8-8-3-3-8 8-3 3 3 3z"/></svg>Scaling Rule</div>
-            <div class="cg-col-tff"><span class="cg-label cg-label-no">No</span><span class="cg-badge cg-no"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 2l10 10M12 2L2 12"/></svg></span></div>
-            <div class="cg-col-others"><span class="cg-label cg-label-yes">Yes</span><span class="cg-badge cg-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
+            <div class="cg-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+                <path d="M9 15l3-3 8-8-3-3-8 8-3 3 3 3z" />
+              </svg>Scaling Rule</div>
+            <div class="cg-col-tff"><span class="cg-label cg-label-no">No</span><span class="cg-badge cg-no"><svg
+                  viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M2 2l10 10M12 2L2 12" />
+                </svg></span></div>
+            <div class="cg-col-others"><span class="cg-label cg-label-yes">Yes</span><span class="cg-badge cg-yes"><svg
+                  viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M2 7l4 4 6-6" />
+                </svg></span></div>
           </div>
           <div class="cg-row">
-            <div class="cg-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>UPI Payouts</div>
-            <div class="cg-col-tff"><span class="cg-label cg-label-yes">Yes</span><span class="cg-badge cg-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
-            <div class="cg-col-others"><span class="cg-label cg-label-no">No</span><span class="cg-badge cg-no"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 2l10 10M12 2L2 12"/></svg></span></div>
+            <div class="cg-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="5" width="20" height="14" rx="2" />
+                <path d="M2 10h20" />
+              </svg>UPI Payouts</div>
+            <div class="cg-col-tff"><span class="cg-label cg-label-yes">Yes</span><span class="cg-badge cg-yes"><svg
+                  viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M2 7l4 4 6-6" />
+                </svg></span></div>
+            <div class="cg-col-others"><span class="cg-label cg-label-no">No</span><span class="cg-badge cg-no"><svg
+                  viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M2 2l10 10M12 2L2 12" />
+                </svg></span></div>
           </div>
           <div class="cg-row">
-            <div class="cg-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>IP Rule</div>
-            <div class="cg-col-tff"><span class="cg-label cg-label-no">No</span><span class="cg-badge cg-no"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 2l10 10M12 2L2 12"/></svg></span></div>
-            <div class="cg-col-others"><span class="cg-label cg-label-yes">Yes</span><span class="cg-badge cg-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
+            <div class="cg-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>IP Rule</div>
+            <div class="cg-col-tff"><span class="cg-label cg-label-no">No</span><span class="cg-badge cg-no"><svg
+                  viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M2 2l10 10M12 2L2 12" />
+                </svg></span></div>
+            <div class="cg-col-others"><span class="cg-label cg-label-yes">Yes</span><span class="cg-badge cg-yes"><svg
+                  viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M2 7l4 4 6-6" />
+                </svg></span></div>
           </div>
           <div class="cg-row">
-            <div class="cg-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Ultrafast Support</div>
-            <div class="cg-col-tff"><span class="cg-label cg-label-yes">Yes</span><span class="cg-badge cg-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
-            <div class="cg-col-others"><span class="cg-label cg-label-no">No</span><span class="cg-badge cg-no"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 2l10 10M12 2L2 12"/></svg></span></div>
+            <div class="cg-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
+              </svg>Ultrafast Support</div>
+            <div class="cg-col-tff"><span class="cg-label cg-label-yes">Yes</span><span class="cg-badge cg-yes"><svg
+                  viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M2 7l4 4 6-6" />
+                </svg></span></div>
+            <div class="cg-col-others"><span class="cg-label cg-label-no">No</span><span class="cg-badge cg-no"><svg
+                  viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M2 2l10 10M12 2L2 12" />
+                </svg></span></div>
           </div>
           <div class="cg-row">
-            <div class="cg-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>News Trading</div>
-            <div class="cg-col-tff"><span class="cg-label cg-label-yes">Yes</span><span class="cg-badge cg-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
-            <div class="cg-col-others"><span class="cg-label cg-label-no">No</span><span class="cg-badge cg-no"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 2l10 10M12 2L2 12"/></svg></span></div>
+            <div class="cg-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>News Trading</div>
+            <div class="cg-col-tff"><span class="cg-label cg-label-yes">Yes</span><span class="cg-badge cg-yes"><svg
+                  viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M2 7l4 4 6-6" />
+                </svg></span></div>
+            <div class="cg-col-others"><span class="cg-label cg-label-no">No</span><span class="cg-badge cg-no"><svg
+                  viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M2 2l10 10M12 2L2 12" />
+                </svg></span></div>
           </div>
           <div class="cg-row cg-row-last">
-            <div class="cg-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>MT5 Platform</div>
-            <div class="cg-col-tff"><span class="cg-label cg-label-yes">Yes</span><span class="cg-badge cg-yes"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 7l4 4 6-6"/></svg></span></div>
-            <div class="cg-col-others"><span class="cg-label cg-label-no">No</span><span class="cg-badge cg-no"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 2l10 10M12 2L2 12"/></svg></span></div>
+            <div class="cg-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <path d="M8 21h8M12 17v4" />
+              </svg>MT5 Platform</div>
+            <div class="cg-col-tff"><span class="cg-label cg-label-yes">Yes</span><span class="cg-badge cg-yes"><svg
+                  viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M2 7l4 4 6-6" />
+                </svg></span></div>
+            <div class="cg-col-others"><span class="cg-label cg-label-no">No</span><span class="cg-badge cg-no"><svg
+                  viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M2 2l10 10M12 2L2 12" />
+                </svg></span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== ABOUT SECTION ===== -->
+  <!-- ===== WHAT OUR CLIENTS SAY ===== -->
+  <section id="clients-say" class="section trader-stories-section">
+    <div class="ts-inner">
+      <!-- Left panel -->
+      <div class="ts-left">
+        <span class="section-tag">Trader Stories</span>
+        <h2 class="ts-headline">Real Traders.<br>Real Results.</h2>
+        <p class="ts-desc">Meet the traders who transformed their trading journey with our funding programs and turned skill into real results.</p>
+        <div class="ts-dots" id="ts-dots"></div>
+      </div>
+      <!-- Right scrollable panel -->
+      <div class="ts-track-wrap">
+        <div class="ts-track" id="ts-track">
+
+          <!-- Card 1 -->
+          <div class="ts-card">
+            <div class="ts-video-wrap" style="position:relative;cursor:pointer;" id="ts-card-1" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/wOjQARzVeyw?autoplay=1\' title=\'Trader 1\' frameborder=\'0\' allow=\'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen style=\'width:100%;height:100%;position:absolute;inset:0;\'></iframe>';">
+              <img src="https://img.youtube.com/vi/wOjQARzVeyw/hqdefault.jpg" alt="Trader 1" style="width:100%;height:100%;object-fit:cover;display:block;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+                <div style="width:56px;height:56px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                  <svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="ts-card-info">
+              <span class="ts-name">Arjun S.</span>
+              <span class="ts-payout">Payouts of $7,191</span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="ts-card">
+            <div class="ts-video-wrap" style="position:relative;cursor:pointer;" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/vmaG486ZUJI?autoplay=1\' title=\'Trader 2\' frameborder=\'0\' allow=\'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen style=\'width:100%;height:100%;position:absolute;inset:0;\'></iframe>';">
+              <img src="https://img.youtube.com/vi/vmaG486ZUJI/hqdefault.jpg" alt="Trader 2" style="width:100%;height:100%;object-fit:cover;display:block;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><div style="width:56px;height:56px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="ts-card-info">
+              <span class="ts-name">Priya M.</span>
+              <span class="ts-payout">Payouts of $21,769</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="ts-card">
+            <div class="ts-video-wrap" style="position:relative;cursor:pointer;" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/ukQU-L6Qj9k?autoplay=1\' title=\'Trader 3\' frameborder=\'0\' allow=\'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen style=\'width:100%;height:100%;position:absolute;inset:0;\'></iframe>';">
+              <img src="https://img.youtube.com/vi/ukQU-L6Qj9k/hqdefault.jpg" alt="Trader 3" style="width:100%;height:100%;object-fit:cover;display:block;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><div style="width:56px;height:56px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="ts-card-info">
+              <span class="ts-name">Rahul D.</span>
+              <span class="ts-payout">Payouts of $9,752</span>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="ts-card">
+            <div class="ts-video-wrap" style="position:relative;cursor:pointer;" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/uRmFOWKCx48?autoplay=1\' title=\'Trader 4\' frameborder=\'0\' allow=\'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen style=\'width:100%;height:100%;position:absolute;inset:0;\'></iframe>';">
+              <img src="https://img.youtube.com/vi/uRmFOWKCx48/hqdefault.jpg" alt="Trader 4" style="width:100%;height:100%;object-fit:cover;display:block;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><div style="width:56px;height:56px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="ts-card-info">
+              <span class="ts-name">Sneha K.</span>
+              <span class="ts-payout">Payouts of $14,300</span>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="ts-card">
+            <div class="ts-video-wrap" style="position:relative;cursor:pointer;" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/OM7kNtrun_8?autoplay=1\' title=\'Trader 5\' frameborder=\'0\' allow=\'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen style=\'width:100%;height:100%;position:absolute;inset:0;\'></iframe>';">
+              <img src="https://img.youtube.com/vi/OM7kNtrun_8/hqdefault.jpg" alt="Trader 5" style="width:100%;height:100%;object-fit:cover;display:block;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><div style="width:56px;height:56px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="ts-card-info">
+              <span class="ts-name">Vikram T.</span>
+              <span class="ts-payout">Payouts of $5,500</span>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="ts-card">
+            <div class="ts-video-wrap" style="position:relative;cursor:pointer;" onclick="this.innerHTML='<iframe src=\'https://www.youtube.com/embed/qJTJAxd_omU?autoplay=1\' title=\'Trader 6\' frameborder=\'0\' allow=\'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen style=\'width:100%;height:100%;position:absolute;inset:0;\'></iframe>';">
+              <img src="https://img.youtube.com/vi/qJTJAxd_omU/hqdefault.jpg" alt="Trader 6" style="width:100%;height:100%;object-fit:cover;display:block;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><div style="width:56px;height:56px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="ts-card-info">
+              <span class="ts-name">Meera R.</span>
+              <span class="ts-payout">Payouts of $18,400</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Nav arrows -->
+      <button class="ts-arrow ts-arrow-prev" id="ts-prev" aria-label="Previous">&#8249;</button>
+      <button class="ts-arrow ts-arrow-next" id="ts-next" aria-label="Next">&#8250;</button>
+    </div>
+    <div class="ts-more-link">
+      <a href="https://www.instagram.com/thefusionfunded/" target="_blank" class="ts-more-anchor">
+        Want to hear more from our traders?
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
   <section id="about" class="section about-section">
     <div class="section-bg-glow about-glow"></div>
     <img src="bestplan_bg.png" alt="" class="deco-halo deco-halo-about" aria-hidden="true" />
@@ -614,7 +973,8 @@
     <img src="3dchart.png" alt="" class="deco-chart deco-chart-cta" aria-hidden="true" />
     <div class="container cta-container">
       <h2 class="cta-headline" data-reveal>Get Started <span class="gradient-text">Today</span></h2>
-      <p class="cta-desc" data-reveal>Ready to take your trading to the next level? Join The Fusion Funded and unlock the potential
+      <p class="cta-desc" data-reveal>Ready to take your trading to the next level? Join The Fusion Funded and unlock
+        the potential
         of professional trading with the best tools, fast payouts, and expert support from a trusted prop firm.</p>
       <div class="cta-actions">
         <a href="https://user.thefusionfunded.com/user/signup" class="btn-primary btn-large" target="_blank">
@@ -702,7 +1062,7 @@
           <ul>
             <li><a href="mailto:info@thefusionfunded.com">info@thefusionfunded.com</a></li>
             <li><a href="tel:+447861395161">+44 7861 395161</a></li>
-            <li>Grigori Afxentiou, Ayia Napa, Cyprus</li>
+            <li>3rd Floor, The Binary Tower, Marasi Dr - Business Bay, Dubai, UAE</li>
           </ul>
         </div>
       </div>
@@ -734,8 +1094,8 @@
   </footer>
 
   <!-- WhatsApp Float -->
-  <a href="https://wa.me/447861395161?text=Hey%2C%20I%20need%20help%20with%20..." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp"
-    id="whatsapp-float">
+  <a href="https://wa.me/447861395161?text=Hey%2C%20I%20need%20help%20with%20..." class="whatsapp-float" target="_blank"
+    aria-label="Chat on WhatsApp" id="whatsapp-float">
     <svg viewBox="0 0 24 24" fill="currentColor">
       <path
         d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
@@ -744,18 +1104,34 @@
   </a>
 
   <script src="app.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      var loader = document.getElementById('page-loader');
+      loader.classList.add('hide');
+      setTimeout(function () { loader.style.display = 'none'; }, 700);
+    });
+  </script>
 
   <!-- ===== GIVEAWAY MODAL ===== -->
-  <div id="giveaway-overlay" style="position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:modalFadeIn 0.4s ease both;">
-    <div id="giveaway-modal" style="position:relative;width:90%;max-width:460px;border-radius:24px;padding:2px;background:conic-gradient(from 0deg,transparent 0deg,rgba(0,212,255,0.9) 60deg,rgba(0,80,200,0.5) 120deg,transparent 180deg,rgba(0,212,255,0.6) 240deg,transparent 300deg,transparent 360deg);animation:modalSlideUp 0.4s cubic-bezier(0.16,1,0.3,1) both,cgModalSpin 12s linear infinite;">
-      <div style="border-radius:22px;background:rgba(6,14,28,0.88);backdrop-filter:blur(32px) saturate(200%);-webkit-backdrop-filter:blur(32px) saturate(200%);padding:48px 40px 36px;text-align:center;box-shadow:0 8px 60px rgba(0,0,0,0.7),inset 0 1px 0 rgba(255,255,255,0.08);position:relative;overflow:hidden;">
+  <div id="giveaway-overlay"
+    style="position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:modalFadeIn 0.4s ease both;">
+    <div id="giveaway-modal"
+      style="position:relative;width:90%;max-width:460px;border-radius:24px;padding:2px;background:conic-gradient(from 0deg,transparent 0deg,rgba(0,212,255,0.9) 60deg,rgba(0,80,200,0.5) 120deg,transparent 180deg,rgba(0,212,255,0.6) 240deg,transparent 300deg,transparent 360deg);animation:modalSlideUp 0.4s cubic-bezier(0.16,1,0.3,1) both,cgModalSpin 12s linear infinite;">
+      <div
+        style="border-radius:22px;background:rgba(6,14,28,0.88);backdrop-filter:blur(32px) saturate(200%);-webkit-backdrop-filter:blur(32px) saturate(200%);padding:48px 40px 36px;text-align:center;box-shadow:0 8px 60px rgba(0,0,0,0.7),inset 0 1px 0 rgba(255,255,255,0.08);position:relative;overflow:hidden;">
         <!-- shimmer top line -->
-        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,212,255,0.5),transparent);"></div>
+        <div
+          style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,212,255,0.5),transparent);">
+        </div>
         <!-- close btn -->
-        <button onclick="document.getElementById('giveaway-overlay').style.display='none'" style="position:absolute;top:16px;right:20px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:1rem;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">&times;</button>
+        <button onclick="document.getElementById('giveaway-overlay').style.display='none'"
+          style="position:absolute;top:16px;right:20px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:1rem;transition:background 0.2s;"
+          onmouseover="this.style.background='rgba(255,255,255,0.15)'"
+          onmouseout="this.style.background='rgba(255,255,255,0.07)'">&times;</button>
         <!-- gift icon -->
         <div style="margin-bottom:20px;display:flex;align-items:center;justify-content:center;">
-          <svg viewBox="0 0 80 80" width="72" height="72" style="overflow:visible;filter:drop-shadow(0 0 10px rgba(50,49,196,0.5));">
+          <svg viewBox="0 0 80 80" width="72" height="72"
+            style="overflow:visible;filter:drop-shadow(0 0 10px rgba(50,49,196,0.5));">
             <defs>
               <linearGradient id="giftGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stop-color="rgb(50,49,196)" />
@@ -764,58 +1140,101 @@
               </linearGradient>
             </defs>
             <!-- box body -->
-            <rect x="10" y="34" width="60" height="38" rx="3"
-              fill="none" stroke="url(#giftGrad)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
-              stroke-dasharray="220" stroke-dashoffset="220"
-              style="animation:traceGift 2.2s 0.2s cubic-bezier(0.16,1,0.3,1) forwards;"/>
+            <rect x="10" y="34" width="60" height="38" rx="3" fill="none" stroke="url(#giftGrad)" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="220" stroke-dashoffset="220"
+              style="animation:traceGift 2.2s 0.2s cubic-bezier(0.16,1,0.3,1) forwards;" />
             <!-- lid -->
-            <rect x="6" y="22" width="68" height="14" rx="3"
-              fill="none" stroke="url(#giftGrad)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
-              stroke-dasharray="180" stroke-dashoffset="180"
-              style="animation:traceGift 1.8s 0.6s cubic-bezier(0.16,1,0.3,1) forwards;"/>
+            <rect x="6" y="22" width="68" height="14" rx="3" fill="none" stroke="url(#giftGrad)" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="180" stroke-dashoffset="180"
+              style="animation:traceGift 1.8s 0.6s cubic-bezier(0.16,1,0.3,1) forwards;" />
             <!-- vertical ribbon -->
-            <line x1="40" y1="22" x2="40" y2="72"
-              stroke="url(#giftGrad)" stroke-width="2.2" stroke-linecap="round"
-              stroke-dasharray="52" stroke-dashoffset="52"
-              style="animation:traceGift 1s 1.6s ease forwards;"/>
+            <line x1="40" y1="22" x2="40" y2="72" stroke="url(#giftGrad)" stroke-width="2.2" stroke-linecap="round"
+              stroke-dasharray="52" stroke-dashoffset="52" style="animation:traceGift 1s 1.6s ease forwards;" />
             <!-- bow left loop -->
-            <path d="M40 22 C30 14 14 14 18 22"
-              fill="none" stroke="url(#giftGrad)" stroke-width="2.2" stroke-linecap="round"
-              stroke-dasharray="40" stroke-dashoffset="40"
-              style="animation:traceGift 0.9s 1.9s ease forwards;"/>
+            <path d="M40 22 C30 14 14 14 18 22" fill="none" stroke="url(#giftGrad)" stroke-width="2.2"
+              stroke-linecap="round" stroke-dasharray="40" stroke-dashoffset="40"
+              style="animation:traceGift 0.9s 1.9s ease forwards;" />
             <!-- bow right loop -->
-            <path d="M40 22 C50 14 66 14 62 22"
-              fill="none" stroke="url(#giftGrad)" stroke-width="2.2" stroke-linecap="round"
-              stroke-dasharray="40" stroke-dashoffset="40"
-              style="animation:traceGift 0.9s 2.1s ease forwards;"/>
+            <path d="M40 22 C50 14 66 14 62 22" fill="none" stroke="url(#giftGrad)" stroke-width="2.2"
+              stroke-linecap="round" stroke-dasharray="40" stroke-dashoffset="40"
+              style="animation:traceGift 0.9s 2.1s ease forwards;" />
             <!-- top dot -->
-            <circle cx="40" cy="22" r="3"
-              fill="#7b7af0" opacity="0"
-              style="animation:popGiftDot 0.4s 2.8s ease forwards;"/>
+            <circle cx="40" cy="22" r="3" fill="#7b7af0" opacity="0"
+              style="animation:popGiftDot 0.4s 2.8s ease forwards;" />
           </svg>
         </div>
         <!-- headline -->
-        <h2 style="font-family:'Orbitron',monospace;font-size:1.9rem;font-weight:900;color:#ffffff;margin-bottom:6px;line-height:1.1;">Win <span style="color:rgb(50,49,196);">$100,000</span></h2>
-        <p style="font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:700;color:rgb(50,49,196);margin-bottom:20px;letter-spacing:0.05em;">Giveaway!</p>
+        <h2
+          style="font-family:'Orbitron',monospace;font-size:1.9rem;font-weight:900;color:#ffffff;margin-bottom:6px;line-height:1.1;">
+          Win <span style="color:rgb(50,49,196);">$100,000</span></h2>
+        <p
+          style="font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:700;color:rgb(50,49,196);margin-bottom:20px;letter-spacing:0.05em;">
+          Giveaway!</p>
         <!-- desc -->
-        <p style="font-family:'Inter',sans-serif;font-size:0.95rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-bottom:28px;">Enter your email for a chance to win our exclusive 100k giveaway. Don't miss out on this incredible opportunity!</p>
+        <p
+          style="font-family:'Inter',sans-serif;font-size:0.95rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-bottom:28px;">
+          Enter your email for a chance to win our exclusive 100k giveaway. Don't miss out on this incredible
+          opportunity!</p>
         <!-- email input -->
-        <input type="email" id="giveaway-email" placeholder="Enter your email" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(0,212,255,0.25);border-radius:8px;padding:14px 18px;font-family:'Inter',sans-serif;font-size:0.95rem;color:#fff;outline:none;margin-bottom:14px;box-sizing:border-box;transition:border-color 0.3s;" onfocus="this.style.borderColor='rgb(50,49,196)'" onblur="this.style.borderColor='rgba(0,212,255,0.25)'" />
+        <input type="email" id="giveaway-email" placeholder="Enter your email"
+          style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(0,212,255,0.25);border-radius:8px;padding:14px 18px;font-family:'Inter',sans-serif;font-size:0.95rem;color:#fff;outline:none;margin-bottom:14px;box-sizing:border-box;transition:border-color 0.3s;"
+          onfocus="this.style.borderColor='rgb(50,49,196)'" onblur="this.style.borderColor='rgba(0,212,255,0.25)'" />
         <!-- submit btn -->
-        <button id="giveaway-btn" onclick="submitGiveaway()" style="width:100%;background:rgb(50,49,196);color:#fff;border:none;border-radius:8px;padding:16px;font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:box-shadow 0.3s,transform 0.3s;box-shadow:0 0 24px rgba(50,49,196,0.5);" onmouseover="this.style.boxShadow='0 0 40px rgba(50,49,196,0.8)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='0 0 24px rgba(50,49,196,0.5)';this.style.transform='translateY(0)'">Enter Giveaway</button>
-        <p id="giveaway-msg" style="font-family:'Inter',sans-serif;font-size:0.82rem;margin-top:10px;min-height:18px;color:rgba(255,255,255,0.5);"></p>
+        <button id="giveaway-btn" onclick="submitGiveaway()"
+          style="width:100%;background:rgb(50,49,196);color:#fff;border:none;border-radius:8px;padding:16px;font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:box-shadow 0.3s,transform 0.3s;box-shadow:0 0 24px rgba(50,49,196,0.5);"
+          onmouseover="this.style.boxShadow='0 0 40px rgba(50,49,196,0.8)';this.style.transform='translateY(-2px)'"
+          onmouseout="this.style.boxShadow='0 0 24px rgba(50,49,196,0.5)';this.style.transform='translateY(0)'">Enter
+          Giveaway</button>
+        <p id="giveaway-msg"
+          style="font-family:'Inter',sans-serif;font-size:0.82rem;margin-top:10px;min-height:18px;color:rgba(255,255,255,0.5);">
+        </p>
         <!-- terms -->
-        <p style="font-family:'Inter',sans-serif;font-size:0.72rem;color:rgba(255,255,255,0.3);margin-top:14px;">By entering, you agree to our terms and conditions.</p>
+        <p style="font-family:'Inter',sans-serif;font-size:0.72rem;color:rgba(255,255,255,0.3);margin-top:14px;">By
+          entering, you agree to our terms and conditions.</p>
       </div>
     </div>
   </div>
 
   <style>
-    @keyframes modalFadeIn { from { opacity:0; } to { opacity:1; } }
-    @keyframes modalSlideUp { from { opacity:0; transform:translateY(40px) scale(0.95); } to { opacity:1; transform:translateY(0) scale(1); } }
-    @keyframes cgModalSpin { to { --cg-angle: 360deg; } }
-    @keyframes traceGift { to { stroke-dashoffset: 0; } }
-    @keyframes popGiftDot { to { opacity: 1; } }
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes modalSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes cgModalSpin {
+      to {
+        --cg-angle: 360deg;
+      }
+    }
+
+    @keyframes traceGift {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes popGiftDot {
+      to {
+        opacity: 1;
+      }
+    }
   </style>
   <script>
     const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxR48jw8ydufaAvaK5g6Hg5ha9G-4OCnDz1ODyTNNKxN7zizZ1qWy18VcOtA30H9yLEtQ/exec';
@@ -836,12 +1255,12 @@
       msg.textContent = '';
 
       fetch(SHEET_URL + '?email=' + encodeURIComponent(email), { method: 'GET', mode: 'no-cors' })
-        .finally(function() {
+        .finally(function () {
           msg.style.color = '#4ade80';
           msg.textContent = "You're entered! Good luck!";
           btn.textContent = 'Entered!';
           document.getElementById('giveaway-email').value = '';
-          setTimeout(function() {
+          setTimeout(function () {
             document.getElementById('giveaway-overlay').style.display = 'none';
           }, 2000);
         });
@@ -850,4 +1269,3 @@
 </body>
 
 </html>
-

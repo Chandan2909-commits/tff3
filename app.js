@@ -609,3 +609,86 @@
   })();
 
 })();
+
+// ===== TRADER STORIES SLIDER =====
+(function () {
+  var track = document.getElementById('ts-track');
+  var dotsWrap = document.getElementById('ts-dots');
+  var prevBtn = document.getElementById('ts-prev');
+  var nextBtn = document.getElementById('ts-next');
+  var section = document.getElementById('clients-say');
+  if (!track) return;
+
+  var cards = track.querySelectorAll('.ts-card');
+  var total = cards.length;
+  var perPage = window.innerWidth <= 768 ? 1 : 3;
+  var pages = Math.ceil(total / perPage);
+  var current = 0; // page index
+  var gap = 20;
+  var scrollLocked = false;
+  var lastScrollY = 0;
+
+  function getCardW() {
+    return cards[0] ? cards[0].offsetWidth : 280;
+  }
+
+  // Build dots (one per page)
+  for (var i = 0; i < pages; i++) {
+    var d = document.createElement('span');
+    d.className = 'ts-dot' + (i === 0 ? ' active' : '');
+    dotsWrap.appendChild(d);
+  }
+
+  function goTo(page) {
+    perPage = window.innerWidth <= 768 ? 1 : 3;
+    pages = Math.ceil(total / perPage);
+    current = Math.max(0, Math.min(page, pages - 1));
+    var cardW = getCardW();
+    track.style.transform = 'translateX(-' + current * perPage * (cardW + gap) + 'px)';
+    dotsWrap.querySelectorAll('.ts-dot').forEach(function (d, i) {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  // Scroll-based advance: when section is in viewport, wheel scrolls the slider
+  window.addEventListener('wheel', function (e) {
+    var rect = section.getBoundingClientRect();
+    var inView = rect.top < window.innerHeight * 0.6 && rect.bottom > window.innerHeight * 0.4;
+    if (!inView) return;
+
+    // Only intercept if there are more pages to show
+    if (e.deltaY > 30 && current < pages - 1) {
+      e.preventDefault();
+      if (scrollLocked) return;
+      scrollLocked = true;
+      goTo(current + 1);
+      setTimeout(function () { scrollLocked = false; }, 700);
+    } else if (e.deltaY < -30 && current > 0) {
+      e.preventDefault();
+      if (scrollLocked) return;
+      scrollLocked = true;
+      goTo(current - 1);
+      setTimeout(function () { scrollLocked = false; }, 700);
+    }
+  }, { passive: false });
+
+  // Arrow clicks
+  if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
+
+  // Touch swipe
+  var startX = 0, startY = 0;
+  var wrap = track.parentElement;
+  wrap.addEventListener('touchstart', function (e) {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  }, { passive: true });
+  wrap.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - startX;
+    var dy = e.changedTouches[0].clientY - startY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      if (dx < 0) goTo(current + 1);
+      else goTo(current - 1);
+    }
+  });
+})();
