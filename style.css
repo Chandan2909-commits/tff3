@@ -3156,9 +3156,16 @@ button {
 
 .ts-track-wrap {
   flex: 1;
-  overflow: hidden;
+  overflow-x: scroll;
+  overflow-y: hidden;
   cursor: grab;
   user-select: none;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.ts-track-wrap::-webkit-scrollbar {
+  display: none;
 }
 
 .ts-track-wrap:active {
@@ -3168,17 +3175,17 @@ button {
 .ts-track {
   display: flex;
   gap: 20px;
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
+  width: max-content;
 }
 
 .ts-card {
-  flex: 0 0 calc((100% - 40px) / 3);
+  flex: 0 0 280px;
   background: var(--bg-card);
   border: 1px solid var(--bg-card-border);
   border-radius: 16px;
   overflow: hidden;
   position: relative;
+  scroll-snap-align: start;
 }
 
 .ts-video-wrap {
@@ -3263,14 +3270,16 @@ button {
     width: 100%;
   }
   .ts-card {
-    flex: 0 0 100%;
-    width: 100%;
+    flex: 0 0 85vw;
+    width: 85vw;
+    scroll-snap-align: start;
   }
   .ts-video-wrap {
-    aspect-ratio: 16/9;
+    aspect-ratio: 9/14;
   }
-  .ts-arrow-prev { left: 0; }
-  .ts-arrow-next { right: 0; }
+  .ts-arrow {
+    display: none !important;
+  }
   .ts-headline {
     font-size: 1.5rem;
   }
